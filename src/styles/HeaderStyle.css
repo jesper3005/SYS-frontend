@@ -24,9 +24,10 @@ ul.header li {
 
 
 ul.header li a:hover:not(.active) { 
-  background-color: #ffda79;
+  background-color:  #ccae62;
 }
  
 .active { 
-  background-color: #ccae62;
+  background-color: #ffda79;
 }
+

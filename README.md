@@ -6,4 +6,4 @@ npm install
 
 npm install react-router-dom
 
-npm install semantic-ui-react
+npm install react-bootstrap bootstrap
