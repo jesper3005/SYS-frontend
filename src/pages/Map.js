@@ -13,11 +13,11 @@ export class MapContainer extends Component {
     return (
       <Map
         google={this.props.google}
-        zoom={14}
+        zoom={18}
         style={mapStyles}
         initialCenter={{
-         lat: -1.2884,
-         lng: 36.8233
+         lat: 55.770179,
+         lng: 12.511735
         }}
       />
     );
@@ -25,5 +25,5 @@ export class MapContainer extends Component {
 }
 
 export default GoogleApiWrapper({
-  apiKey: 'API-KEY-HERE'
+  apiKey: 'AIzaSyDsHzXRv-WkUZ0vha0t6hbCfm8T-4YgXkU'
 })(MapContainer);
