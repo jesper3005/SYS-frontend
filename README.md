@@ -1,6 +1,6 @@
 ## TTTGroup Frontend for SYS
 
-Dependicies to install:
+To install:
 
 npm install
 
