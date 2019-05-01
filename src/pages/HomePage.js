@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
+import CarItem from '../components/CarItem'
 
 class HomePage extends Component {
     state = {  }
     render() { 
-        return ( <h1>Hello homepage</h1> );
+        return ( 
+            <div>
+                <CarItem />
+            </div> 
+        );
     }
 }
  

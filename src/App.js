@@ -10,14 +10,16 @@ import Header from './components/Header'
 import BrandBanner from './components/Banner'
 
 export default class App extends Component {
-    state = { token: "" };
+    state = { 
+        token: "",
+    };
 
     render() {
         return (
             <Router >
                 <div>
                     <BrandBanner />
-                    <Header />
+                    <Header isLoggedIn={true} />
                     <Switch>
                         <Route exact path="/" render={() => <Home />} />
                         <Route path='/map' render={() => <Map />} />

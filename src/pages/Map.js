@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Map, GoogleApiWrapper, InfoWindow, Marker } from 'google-maps-react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import CarInformation from '../components/CarInformation'
 
 
 export class MapContainer extends Component {
@@ -11,35 +12,24 @@ export class MapContainer extends Component {
     lngHolder: 0,
     showingInfoWindow: false,  //Hides or the shows the infoWindow
     activeMarker: {},          //Shows the active marker upon click
-    selectedPlace: {} 
+    selectedPlace: {},
+    zoom: 18,
   }
 
-  handleChange = event => {
-    const target = event.target;
-    const value = target.value;
-    const name = target.name;
-    this.setState({[name]: value});
-  }
-
-  handleSubmit = event => {
-    event.preventDefault();
-    this.setState ({ lat: this.state.latHolder, lng: this.state.lngHolder}, function() {
-      alert(JSON.stringify(this.state));
-    });
-  }
 
   onMarkerClick = (props, marker, e) =>
     this.setState({
       selectedPlace: props,
       activeMarker: marker,
-      showingInfoWindow: true
+      showingInfoWindow: true,
+      size: 18
     });
 
   onClose = props => {
     if (this.state.showingInfoWindow) {
       this.setState({
         showingInfoWindow: false,
-        activeMarker: null
+        activeMarker: null,
       });
     }
   };
@@ -47,32 +37,10 @@ export class MapContainer extends Component {
   render() {
     return (
         <div>
-          <div>
-            <form onSubmit={this.handleSubmit}> 
-              <input 
-              type="number"
-              name="latHolder"
-              value={this.state.latHolder}
-              placeholder='Latitude'
-              onChange={this.handleChange}
-              />
-
-              <input 
-              type="number"
-              name="lngHolder"
-              value={this.state.lngHolder}
-              placeholder='lng'
-              onChange={this.handleChange}
-              />
-
-              <button type="submit" className='btn btn-primary'>Submit</button>
-              <p> {this.state.latHolder}  :  {this.state.lngHolder} </p>
-            </form>
-          </div>
-          
+          <CarInformation />         
           <Map
             google={this.props.google}
-            zoom={18}
+            zoom={this.state.zoom}
             style={mapStyles}
             initialCenter={{
               lat: this.state.lat,
@@ -81,8 +49,8 @@ export class MapContainer extends Component {
           >
           <Marker
             onClick={this.onMarkerClick}
-            name={'TURTLE CAR RENTAL'}
-            info={'hahahufbsk'}
+            title={'Car location'}
+            address={'Nørgaardvej 30'}
           />
           <InfoWindow
             marker={this.state.activeMarker}
@@ -90,8 +58,8 @@ export class MapContainer extends Component {
             onClose={this.onClose}
           >
             <div>
-              <h4>{this.state.selectedPlace.name}</h4>
-              <p>{this.state.selectedPlace.info}</p>
+              <h4>{this.state.selectedPlace.title}</h4>
+              <p>{this.state.selectedPlace.address}</p>
             </div>
           </InfoWindow>
           </Map>
@@ -102,7 +70,7 @@ export class MapContainer extends Component {
 
 export default GoogleApiWrapper(
   (props) => ({
-    apiKey: '',
+    apiKey: 'AIzaSyDsHzXRv-WkUZ0vha0t6hbCfm8T-4YgXkU',
   }
 ))(MapContainer)
 
@@ -114,3 +82,17 @@ const mapStyles = {
   alignItems: 'center',
   justifyContent: 'center',
 };
+
+// handleChange = event => {
+//   const target = event.target;
+//   const value = target.value;
+//   const name = target.name;
+//   this.setState({[name]: value});
+// }
+
+// handleSubmit = event => {
+//   event.preventDefault();
+//   this.setState ({ lat: this.state.latHolder, lng: this.state.lngHolder}, function() {
+//     alert(JSON.stringify(this.state));
+//   });
+// }
