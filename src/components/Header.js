@@ -11,7 +11,6 @@ const Header = () => {
             <li><NavLink activeClassName="active" to="/adminPage">ADMIN</NavLink></li>
             <li><NavLink activeClassName="active" to="/login">LOGIN</NavLink></li>
             <li><NavLink activeClassName="active" to="/register">SIGN UP</NavLink></li>
-            
         </ul>
     )
 }
