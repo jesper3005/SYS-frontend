@@ -6,6 +6,7 @@ import UserPage from "./pages/UserPage";
 import Register from './pages/Register';
 import Home from './pages/HomePage';
 import Map from './pages/Map'
+import NoMatch from './pages/PageNotFound'
 import Header from './components/Header'
 import BrandBanner from './components/Banner'
 
@@ -34,10 +35,3 @@ export default class App extends Component {
         );
     };
 }
-
-
-function NoMatch() {
-    return (
-        <h2>404 - Page not found!</h2>
-    )
-};
