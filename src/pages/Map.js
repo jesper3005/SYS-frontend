@@ -1,36 +1,7 @@
 import React, { Component } from 'react';
-import { Map, GoogleApiWrapper } from 'google-maps-react';
+import { Map, GoogleApiWrapper, InfoWindow, Marker } from 'google-maps-react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-const mapStyles = {
-    width: '70%',
-    height: '50%',
-    position: 'relative',
-    alignItems: 'center',
-    justifyContent: 'center',
-};  
-
-
-const InputFields = (handleSubmit) => {
-  return (
-    <div>
-      <form onSubmit={handleSubmit}> 
-        <input 
-        type="number"
-        name="lat"
-        placeholder='Latitude'
-        />
-
-        <input 
-        type="number"
-        name="lng"
-        placeholder='lng'
-        />
-
-        <input type="submit" value="Submit!" />
-      </form>
-    </div>
-  ) 
-}
 
 export class MapContainer extends Component {
   state = {
@@ -38,6 +9,9 @@ export class MapContainer extends Component {
     lng: 12.511735,
     latHolder: 0,
     lngHolder: 0,
+    showingInfoWindow: false,  //Hides or the shows the infoWindow
+    activeMarker: {},          //Shows the active marker upon click
+    selectedPlace: {} 
   }
 
   handleChange = event => {
@@ -48,10 +22,27 @@ export class MapContainer extends Component {
   }
 
   handleSubmit = event => {
-    this.setState = { lat: this.state.latHolder, lng: this.state.lngHolder};
-    alert(JSON.stringify(this.state));
     event.preventDefault();
+    this.setState ({ lat: this.state.latHolder, lng: this.state.lngHolder}, function() {
+      alert(JSON.stringify(this.state));
+    });
   }
+
+  onMarkerClick = (props, marker, e) =>
+    this.setState({
+      selectedPlace: props,
+      activeMarker: marker,
+      showingInfoWindow: true
+    });
+
+  onClose = props => {
+    if (this.state.showingInfoWindow) {
+      this.setState({
+        showingInfoWindow: false,
+        activeMarker: null
+      });
+    }
+  };
 
   render() {
     return (
@@ -61,6 +52,7 @@ export class MapContainer extends Component {
               <input 
               type="number"
               name="latHolder"
+              value={this.state.latHolder}
               placeholder='Latitude'
               onChange={this.handleChange}
               />
@@ -68,13 +60,16 @@ export class MapContainer extends Component {
               <input 
               type="number"
               name="lngHolder"
+              value={this.state.lngHolder}
               placeholder='lng'
               onChange={this.handleChange}
               />
 
-              <input type="submit" value="Submit!" />
+              <button type="submit" className='btn btn-primary'>Submit</button>
+              <p> {this.state.latHolder}  :  {this.state.lngHolder} </p>
             </form>
           </div>
+          
           <Map
             google={this.props.google}
             zoom={18}
@@ -83,7 +78,23 @@ export class MapContainer extends Component {
               lat: this.state.lat,
               lng: this.state.lng,
             }}
+          >
+          <Marker
+            onClick={this.onMarkerClick}
+            name={'TURTLE CAR RENTAL'}
+            info={'hahahufbsk'}
           />
+          <InfoWindow
+            marker={this.state.activeMarker}
+            visible={this.state.showingInfoWindow}
+            onClose={this.onClose}
+          >
+            <div>
+              <h4>{this.state.selectedPlace.name}</h4>
+              <p>{this.state.selectedPlace.info}</p>
+            </div>
+          </InfoWindow>
+          </Map>
         </div>
     );
   }
@@ -94,3 +105,12 @@ export default GoogleApiWrapper(
     apiKey: '',
   }
 ))(MapContainer)
+
+
+const mapStyles = {
+  width: '70%',
+  height: '50%',
+  position: 'relative',
+  alignItems: 'center',
+  justifyContent: 'center',
+};
