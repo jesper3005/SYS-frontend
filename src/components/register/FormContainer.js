@@ -5,8 +5,15 @@ import styled from 'styled-components';
 
 class FormContainer extends Component {
   state = {
+    firstName: '',
+    lastName: '',
     email: '',
     password: '',
+    passwordConfirmation: '',
+    birthDate: '',
+    gender: '',
+    phone: '',
+    driverLicenseNumber: '',
   };
 
   handleSubmit = event => {
@@ -19,11 +26,28 @@ class FormContainer extends Component {
   };
 
   render() {
-    const { email, password } = this.state;
+    const { firstName, lastName, email, password, passwordConfirmation,
+      birthDate, gender, phone, driverLicenseNumber,
+    } = this.state;
+
     return (
       <Container>
         <Form onSubmit={this.handleSubmit}>
-          <Title>Sign In</Title>
+          <Title>Sign up</Title>
+          <Input
+            type="text"
+            name="firstName"
+            value={firstName}
+            onChange={this.handleChange}
+            placeholder="First Name"
+          />
+          <Input
+            type="text"
+            name="lastName"
+            value={lastName}
+            onChange={this.handleChange}
+            placeholder="Last Name"
+          />
           <Input
             type="text"
             name="email"
@@ -38,8 +62,42 @@ class FormContainer extends Component {
             onChange={this.handleChange}
             placeholder="Password"
           />
-          <Button type="submit">Sign In</Button>
-          <Button onClick={() => this.props.history.push('/signup')}>Register</Button>
+          <Input
+            type="password"
+            name="passwordConfirmation"
+            value={passwordConfirmation}
+            onChange={this.handleChange}
+            placeholder="Confirm Password"
+          />
+          <Input
+            type="date"
+            name="birthDate"
+            value={birthDate}
+            onChange={this.handleChange}
+            placeholder="Birth Password"
+          />
+          <Select
+            type="date"
+            name="birthDate"
+            onChange={this.handleChange}
+          >
+            <option>Gender</option>
+          </Select>
+          <Input
+            type="phone"
+            name="phone"
+            value={phone}
+            onChange={this.handleChange}
+            placeholder="Phone Number"
+          />
+          <Input
+            type="text"
+            name="driverLicenseNumber"
+            value={driverLicenseNumber}
+            onChange={this.handleChange}
+            placeholder="Driver License Number"
+          />
+          <Button type="submit">Register</Button>
         </Form>
         <Text>Rental serive created by users for users.</Text>
     </Container>
@@ -55,15 +113,15 @@ Container.defaultProps = {
 
 const Form = styled.form`
   @media screen and (min-width: 768px) {
-    position: absolute; top: -5rem;
+    position: absolute; top: -10rem;
   }
   @media screen and (max-width: 768px) {
     position: static;
     margin-top: 3rem;
   }
 
-  min-width: 90%; max-width: 90%;
-  min-height: 20rem; max-height: 20rem;
+  min-width: 100%; max-width: 100%;
+  min-height: 20rem;
   padding: 1rem;
   border: 1px solid #dc6e78; border-radius: 2rem;
   background-color: #fbcfd2;
@@ -89,9 +147,24 @@ const Input = styled.input`
   }
 `;
 
+const Select = styled.select`
+  display: block;
+  min-width: 100%; max-width: 100%;
+  min-height: 3rem; max-height: 3rem;
+  margin: 0.5rem auto;
+  font-size: 120%;
+  border: 1px solid #787878; border-radius: 5px;
+  color: white; background-color: #787878;
+  outline: none;
+  &::placeholder {
+    color: white;
+    padding-left: 0.5rem;
+  }
+`;
+
 const Button = styled.button`
   display: block;
-  min-width: 50%; max-width: 50%;
+  min-width: 100%; max-width: 100%;
   min-height: 3rem; max-height: 3rem;
   margin: 0.5rem auto;
   font-size: 120%;
@@ -101,7 +174,7 @@ const Button = styled.button`
 
 const Text = styled.p`
   @media screen and (min-width: 768px) {
-    position: absolute; top: 16rem;
+    position: absolute; bottom: 3rem;
   }
   @media screen and (max-width: 768px) {
     position: static;
@@ -109,7 +182,7 @@ const Text = styled.p`
   }
   font-size: 170%;
   font-weight: bold;
-  color: black;
+  color: white;
 `;
 
 export default withRouter(FormContainer);
