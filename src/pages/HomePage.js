@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import CarItem from '../components/CarItem'
 
 class HomePage extends Component {
     state = {  }
     render() { 
         return ( 
             <div>
-                <CarItem />
+                <h3>Homepage</h3>
             </div> 
         );
     }

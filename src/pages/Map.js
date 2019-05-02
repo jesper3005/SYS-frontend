@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Map, GoogleApiWrapper, InfoWindow, Marker } from 'google-maps-react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import CarInformation from '../components/CarInformation'
 
 
 export class MapContainer extends Component {
@@ -37,7 +36,6 @@ export class MapContainer extends Component {
   render() {
     return (
         <div>
-          <CarInformation />         
           <Map
             google={this.props.google}
             zoom={this.state.zoom}
