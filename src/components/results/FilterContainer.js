@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import { Col } from 'reactstrap';
-import styled from 'styled-components';
+import React, { Component } from './node_modules/react';
+import { Col } from './node_modules/reactstrap';
+import styled from './node_modules/styled-components';
 
 class FilterContainer extends Component {
   state = {

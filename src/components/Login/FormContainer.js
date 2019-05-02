@@ -39,7 +39,7 @@ class FormContainer extends Component {
             placeholder="Password"
           />
           <Button type="submit">Sign In</Button>
-          <Button onClick={() => this.props.history.push('/register')}>Register</Button>
+          <Button onClick={() => this.props.history.push('/signup')}>Register</Button>
         </Form>
         <Text>Rental serive created by users for users.</Text>
     </Container>
@@ -62,7 +62,7 @@ const Form = styled.form`
     margin-top: 3rem;
   }
 
-  min-width: 100%; max-width: 100%;
+  min-width: 90%; max-width: 90%;
   min-height: 20rem; max-height: 20rem;
   padding: 1rem;
   border: 1px solid #dc6e78; border-radius: 2rem;
@@ -91,7 +91,7 @@ const Input = styled.input`
 
 const Button = styled.button`
   display: block;
-  min-width: 100%; max-width: 100%;
+  min-width: 50%; max-width: 50%;
   min-height: 3rem; max-height: 3rem;
   margin: 0.5rem auto;
   font-size: 120%;
