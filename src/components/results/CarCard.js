@@ -4,7 +4,7 @@ import { Col, Badge } from 'reactstrap';
 import styled from 'styled-components';
 
 const CarCard = ({ profile, title, description, history }) => (
-  <Container onClick={() => history.push('/rent')}>
+  <Container onClick={() => history.push('/carpage')}>
     <ImageContainer>
       <Profile src={profile} />
     </ImageContainer>

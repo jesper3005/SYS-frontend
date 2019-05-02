@@ -2,7 +2,7 @@ ul.header {
   list-style-type: none;
   margin: 0;
   overflow: hidden;
-  background-color:#f1eddd;
+  background-color:#f1f0eb;
   display: flex;
   justify-content: center;
   border-style: solid;
@@ -36,6 +36,6 @@ ul.header li a:hover:not(.active) {
 }
  
 .active { 
-  background-color: #fcf8f0;
+  background-color: #c4cad6;
 }
 
