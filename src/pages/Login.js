@@ -8,7 +8,6 @@ import FormContainer from '../components/Login/FormContainer';
 const SignIn = () => (
   <Container fluid={true}>
     <BrandRow>
-      <BrandContainer />
     </BrandRow>
     <FormRow>
       <FormContainer />
@@ -26,7 +25,7 @@ const FormRow = styled(Row)`
   @media screen and (min-width: 768px) {
     border-top-right-radius: 10rem;
   }
-  background-color: #dc6e78;
+  background-color: #fff7f7;
 `;
 
 export default SignIn;
