@@ -9,6 +9,7 @@ import NoMatch from './pages/PageNotFound'
 import Header from './components/Header'
 import BrandBanner from './components/Banner'
 import Results from './pages/Results'
+import FilterBar from './components/FilterBar'
 
 export default class App extends Component {
     state = { 
@@ -21,6 +22,7 @@ export default class App extends Component {
                 <div>
                     <BrandBanner />
                     <Header isLoggedIn={true} />
+                    <FilterBar />
                     <Switch>
                         <Route exact path="/" render={() => <Home />} />
                         <Route path='/map' render={() => <Map />} />

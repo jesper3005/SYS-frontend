@@ -109,7 +109,7 @@ const Text = styled.p`
   }
   font-size: 170%;
   font-weight: bold;
-  color: white;
+  color: black;
 `;
 
 export default withRouter(FormContainer);

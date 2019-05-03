@@ -5,7 +5,6 @@ import styled from 'styled-components';
 const BrandContainer = () => (
   <Container>
     <Name>Trutle Rental Service</Name>
-    <Logo />
   </Container>
 );
 

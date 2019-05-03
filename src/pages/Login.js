@@ -2,13 +2,11 @@ import React from 'react';
 import { Container, Row } from 'reactstrap';
 import styled from 'styled-components';
 
-import BrandContainer from '../components/login/BrandContainer';
-import FormContainer from '../components/login/FormContainer';
+import FormContainer from '../components/Login/FormContainer';
 
 const SignIn = () => (
   <Container fluid={true}>
     <BrandRow>
-      <BrandContainer />
     </BrandRow>
     <FormRow>
       <FormContainer />
@@ -26,7 +24,7 @@ const FormRow = styled(Row)`
   @media screen and (min-width: 768px) {
     border-top-right-radius: 10rem;
   }
-  background-color: #dc6e78;
+  background-color: #fff7f7;
 `;
 
 export default SignIn;
