@@ -85,7 +85,7 @@ const Input = styled.input`
   outline: none;
   &::placeholder {
     color: white;
-    padding-left: 0.5rem;
+    padding-left: 0rem;
   }
 `;
 
