@@ -10,7 +10,7 @@ class CarContainer extends Component {
   };
 
   render() {
-    const { profile, title, description, history } = this.state;
+    const { profile, title, description } = this.state;
     return (
       <Container>
         <ImageContainer>
@@ -28,6 +28,8 @@ class CarContainer extends Component {
     );
   }
 }
+
+export default CarContainer;
 
 const Container = styled(Col)`
   background-color: white;
@@ -79,4 +81,3 @@ const Description = styled.p`
   overflow: hidden;
 `;
 
-export default CarContainer;

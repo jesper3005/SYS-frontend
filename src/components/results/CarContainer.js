@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { Row } from 'reactstrap';
 import styled from 'styled-components';
-
 import CarCard from './CarCard';
+const url = 'https://fenonline.dk/SYS_Backend/api/car/all'
+
+
 
 class CarContainer extends Component {
   state = {
@@ -11,9 +13,8 @@ class CarContainer extends Component {
 
   componentDidMount() {
     // TODO:
-
-    const data = fetchCars();
-    this.setState({ data });
+    const data_promise = fetch(url).then(handleHttpErrors)
+    data_promise.then(data=>this.setState({data}))
   }
 
   render() {
@@ -25,31 +26,19 @@ class CarContainer extends Component {
   }
 }
 
-const fetchCars = () => {
-  // TODO:
-  return [
-    {
-      profile: 'https://imgct2.aeplcdn.com/img/400/cars/generic/Audi-RS5-Top-Audi-Car-In-India.png',
-      title: 'Car Card Title',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-    },
-    {
-      profile: 'https://imgct2.aeplcdn.com/img/400/cars/generic/Audi-RS5-Top-Audi-Car-In-India.png',
-      title: 'Car Card Title',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-    },
-    {
-      profile: 'https://imgct2.aeplcdn.com/img/400/cars/generic/Audi-RS5-Top-Audi-Car-In-India.png',
-      title: 'Car Card Title',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-    },
-  ];
-};
+export default CarContainer;
+
+function handleHttpErrors(res) {
+  if (!res.ok) {
+    return Promise.reject({ status: res.status, fullError: res.json() })
+  }
+  return res.json();
+}
 
 const carCardItems = data => {
-  const items = data.map((car, i) =>
-    <CarCard key={i} {...car} />
-  );
+  const items = data.map(c =>
+    <CarCard key={c.regno} {...c} />
+    );
   return items;
 };
 
@@ -62,5 +51,3 @@ const Container = styled(Row)`
 Container.defaultProps = {
   xs: 12, sm: 12, md: 8, lg: 9,
 };
-
-export default CarContainer;

@@ -28,6 +28,8 @@ class SellerContainer extends Component {
   }
 }
 
+export default SellerContainer;
+
 const fetchSellerData = () => {
   // TODO:
 
@@ -93,4 +95,4 @@ const Star = styled.span`
   color: ${props => props.marked ? 'orange' : '#ccc'};
 `;
 
-export default SellerContainer;
+

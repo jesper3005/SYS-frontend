@@ -27,7 +27,7 @@ class FormContainer extends Component {
 
   render() {
     const { firstName, lastName, email, password, passwordConfirmation,
-      birthDate, gender, phone, driverLicenseNumber,
+      birthDate, /* gender, */ phone, driverLicenseNumber,
     } = this.state;
 
     return (

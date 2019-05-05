@@ -3,19 +3,15 @@ import { withRouter } from 'react-router-dom';
 import { Col, Badge } from 'reactstrap';
 import styled from 'styled-components';
 
-const CarCard = ({ profile, title, description, history }) => (
-  <Container onClick={() => history.push('/carpage')}>
+const CarCard = ({ profile, manufactor, model, address, price }) => (
+  <Container onClick={() => this.props.history.push('/carpage')}>
     <ImageContainer>
       <Profile src={profile} />
     </ImageContainer>
     <InfoContainer>
-      <Title>{title}</Title> 
-      <Badge color="success">Available</Badge>
-      <Description>
-        {description.length >= 350
-        ? description.substring(0, 350) + '...'
-        : description}
-      </Description>
+      <Title>{manufactor} {model} <Badge color="success">Available</Badge></Title> 
+      <h4> {price}DKK / Day </h4>
+      <p>{address}</p>
     </InfoContainer>
   </Container>
 );
@@ -60,6 +56,7 @@ const InfoContainer = styled.div`
   display: block;
   min-width: 50%; max-width: 50%;
   min-height: 100%; max-height: 100%;
+  margin-top: 50px;
 `;
 
 const Title = styled.h2`
@@ -67,11 +64,11 @@ const Title = styled.h2`
   text-align: center;
 `;
 
-const Description = styled.p`
-  display: flex;
-  min-height: 10.5rem; max-height: 10.5rem;
-  padding: 0 1rem;
-  overflow: hidden;
-`;
+// const Description = styled.p`
+//   display: flex;
+//   min-height: 10.5rem; max-height: 10.5rem;
+//   padding: 0 1rem;
+//   overflow: hidden;
+// `;
 
 export default withRouter(CarCard);
