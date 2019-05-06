@@ -25,10 +25,7 @@ class SearchBar extends Component {
 
     getData = () => {
         const { toDate, fromDate } = this.state
-        var url = 'https://www.fenonline.dk/SYS_Backend/api/car/available/'
-        url += fromDate + "/"
-        url += toDate
-        console.log(url)
+        var url = `https://www.fenonline.dk/SYS_Backend/api/car/available/${fromDate}/${toDate}`
         const data_promise = fetch(url).then(handleHttpErrors)
         data_promise.then(data => this.setState({ data }))
     }
@@ -38,7 +35,7 @@ class SearchBar extends Component {
             <Container>
                 <Container style={styles.container} fluid={true} >
                     <form onSubmit={this.handleSubmit}>
-                        <h5 style={{ color: 'white', }}>Search for your rental here:</h5>
+                        <h5 style={{ color: 'black' }}>Search for your rental here:</h5>
                         <SplitButton variant='secondary' size='sm' style={styles.dropdown} id="dropdown-basic-button" title="Manufactor">
                             <Dropdown.Item href="#/action-1">Fiat</Dropdown.Item>
                             <Dropdown.Item href="#/action-2">Mercedes</Dropdown.Item>
@@ -98,6 +95,7 @@ function handleHttpErrors(res) {
     return res.json();
 }
 
+
 const styles = {
     container: {
         backgroundColor: 'white',
@@ -115,7 +113,4 @@ const styles = {
         alignItems: 'center',
         justifyContent: 'center',
     },
-    items: {
-        textAlign: 'center',
-    }
 }

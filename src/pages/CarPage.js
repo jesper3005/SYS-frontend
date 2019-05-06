@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Container, Row, Col } from 'reactstrap';
 import SellerContainer from '../components/Car/SellerContainer';
 import CarContainer from '../components/Car/CarContainer';
-import Map from '../pages/Map'
+import Map from '../components/Car/Map'
 
 class CarPage extends Component {
   state = { 
@@ -24,7 +24,8 @@ class CarPage extends Component {
           <SellerContainer />
           <Col xs={12} sm={12} md={8} lg={9}>
             <CarContainer data={this.state.data}/>
-            <Map data={this.state.data} />
+            {/* <Map data={this.state.data} /> */}
+            <Map data={this.state.data}/>
           </Col>
         </Row>
       </Container> 

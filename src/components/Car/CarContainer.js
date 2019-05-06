@@ -104,12 +104,3 @@ const Description = styled.div`
   overflow: hidden;
   margin-top: 10px;
 `;
-
-const Description2 = styled.div`
-  display: block;
-  min-height: 10.5rem; max-height: 10.5rem;
-  padding: 0 1rem;
-  overflow: hidden;
-  float: right;
-`;
-

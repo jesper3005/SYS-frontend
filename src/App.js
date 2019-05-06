@@ -4,7 +4,7 @@ import Login from "./pages/Login";
 import Profile from './pages/Profile'
 import Register from './pages/Register';
 import Home from './pages/HomePage';
-import Map from './pages/Map'
+import Map from './components/Car/Map'
 import NoMatch from './pages/PageNotFound'
 import Header from './components/Header'
 import BrandBanner from './components/Banner'
@@ -14,7 +14,7 @@ import CarPage from './pages/CarPage'
 export default class App extends Component {
     state = {
         token: "",
-        regNo: "AB19406",
+        regNo: "AI95295",
     };
 
     render() {

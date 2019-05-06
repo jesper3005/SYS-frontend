@@ -2,24 +2,22 @@ import React, { Component } from 'react';
 import { Map, GoogleApiWrapper, InfoWindow, Marker } from 'google-maps-react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-
 export class MapContainer extends Component {
   state = {
-    lat: 55.6091282,
-    lng: 12.6509822,
+    lng: '',
+    lat: '',
     latHolder: 0,
     lngHolder: 0,
     showingInfoWindow: false,  //Hides or the shows the infoWindow
     activeMarker: {},          //Shows the active marker upon click
     selectedPlace: {},
-    zoom: 18,
+    zoom: 15,
   }
 
   componentDidMount() {
     this.setState({ lat: this.props.data.latitude, lng: this.props.data.longitude})
     console.log(this.state.lat)
   }
-
 
   onMarkerClick = (props, marker, e) =>
     this.setState({
@@ -39,25 +37,29 @@ export class MapContainer extends Component {
   };
 
   render() {
-    console.log(this.state.lat);  
-    const { 
+    const {
       address,
     } = this.props.data
     return (
         <div>
           <Map
             google={this.props.google}
-            zoom={14}
+            zoom={this.state.zoom}
             style={mapStyles}
             initialCenter={{
               lat: this.state.lat,
               lng: this.state.lng,
+            }}
+            center={{
+              lat: this.props.data.latitude,
+              lng: this.props.data.longitude,
             }}
           >
           <Marker
             onClick={this.onMarkerClick}
             title={'Car location'}
             address={address}
+            position={{lat: this.props.data.latitude, lng: this.props.data.longitude}}
           />
           <InfoWindow
             marker={this.state.activeMarker}
