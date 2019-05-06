@@ -1,10 +1,10 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import { Col, Badge } from 'reactstrap';
 import styled from 'styled-components';
 
-const CarCard = ({ profile, manufactor, model, address, price }) => (
-  <Container onClick={() => this.props.history.push('/carpage')}>
+const CarCard = ({ profile, manufactor, model, address, price, regno, regNo}) => (
+  <Container>
     <ImageContainer>
       <Profile src={profile} />
     </ImageContainer>
@@ -12,9 +12,12 @@ const CarCard = ({ profile, manufactor, model, address, price }) => (
       <Title>{manufactor} {model} <Badge color="success">Available</Badge></Title> 
       <h4> {price}DKK / Day </h4>
       <p>{address}</p>
+      <Link to={'/carpage'} onClick={() => regNo = regno}>Go to car {regno}</Link> 
     </InfoContainer>
   </Container>
 );
+
+
 
 const Container = styled(Col)`
   background-color: white;
@@ -28,6 +31,7 @@ const Container = styled(Col)`
   align-items: center;
   text-align: center;
 `;
+
 Container.defaultProps = {
   xs: 11, sm: 11, md: 11, lg: 11,
 };
@@ -72,3 +76,4 @@ const Title = styled.h2`
 // `;
 
 export default withRouter(CarCard);
+

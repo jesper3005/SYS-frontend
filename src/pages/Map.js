@@ -5,8 +5,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 export class MapContainer extends Component {
   state = {
-    lat: 55.770179,
-    lng: 12.511735,
+    lat: 55.6091282,
+    lng: 12.6509822,
     latHolder: 0,
     lngHolder: 0,
     showingInfoWindow: false,  //Hides or the shows the infoWindow
@@ -15,13 +15,18 @@ export class MapContainer extends Component {
     zoom: 18,
   }
 
+  componentDidMount() {
+    this.setState({ lat: this.props.data.latitude, lng: this.props.data.longitude})
+    console.log(this.state.lat)
+  }
+
 
   onMarkerClick = (props, marker, e) =>
     this.setState({
       selectedPlace: props,
       activeMarker: marker,
       showingInfoWindow: true,
-      size: 18
+      size: 30
     });
 
   onClose = props => {
@@ -34,11 +39,15 @@ export class MapContainer extends Component {
   };
 
   render() {
+    console.log(this.state.lat);  
+    const { 
+      address,
+    } = this.props.data
     return (
         <div>
           <Map
             google={this.props.google}
-            zoom={this.state.zoom}
+            zoom={14}
             style={mapStyles}
             initialCenter={{
               lat: this.state.lat,
@@ -48,7 +57,7 @@ export class MapContainer extends Component {
           <Marker
             onClick={this.onMarkerClick}
             title={'Car location'}
-            address={'Nørgaardvej 30'}
+            address={address}
           />
           <InfoWindow
             marker={this.state.activeMarker}
@@ -68,17 +77,16 @@ export class MapContainer extends Component {
 
 export default GoogleApiWrapper(
   (props) => ({
-    apiKey: '',
+    apiKey: 'AIzaSyDsHzXRv-WkUZ0vha0t6hbCfm8T-4YgXkU',
   }
 ))(MapContainer)
 
 
 const mapStyles = {
-  width: '70%',
-  height: '50%',
+  width: '90%',
+  height: '80%',
   position: 'relative',
-  alignItems: 'center',
-  justifyContent: 'center',
+  left: '3.5%',
 };
 
 // handleChange = event => {

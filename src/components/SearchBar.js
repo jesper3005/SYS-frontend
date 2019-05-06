@@ -24,20 +24,14 @@ class SearchBar extends Component {
     }
 
     getData = () => {
-        const { toDate, fromDate} = this.state 
-        var url = 'https://www.fenonline.dk/SYS_Backend/api/car/'
+        const { toDate, fromDate } = this.state
+        var url = 'https://www.fenonline.dk/SYS_Backend/api/car/available/'
         url += fromDate + "/"
         url += toDate
-
-        console.log(fromDate)
-        console.log(toDate)
         console.log(url)
-        alert(JSON.stringify(url))
         const data_promise = fetch(url).then(handleHttpErrors)
-        data_promise.then(data=>this.setState({data}))
+        data_promise.then(data => this.setState({ data }))
     }
-
-
 
     render() {
         return (
@@ -80,7 +74,7 @@ class SearchBar extends Component {
                     </form>
                 </Container>
                 <Container>
-                    {carCardItems(this.state.data) || 'Please wait...'}
+                    {carCardItems(this.state.data, this.props.regNo)}
                 </Container>
             </Container>
         );
@@ -90,9 +84,9 @@ class SearchBar extends Component {
 
 export default SearchBar;
 
-const carCardItems = data => {
+const carCardItems = (data, regNo) => {
     const items = data.map(c =>
-        <CarCard key={c.regno} {...c} />
+        <CarCard key={c.regno} {...c} regNo={regNo} />
     );
     return items;
 };
@@ -113,7 +107,6 @@ const styles = {
         borderWidth: '1px',
         borderColor: '#3d5297',
         borderRadius: '20px',
-
     },
     dropdown: {
         margin: 5,
@@ -121,5 +114,8 @@ const styles = {
         textAlign: 'center',
         alignItems: 'center',
         justifyContent: 'center',
+    },
+    items: {
+        textAlign: 'center',
     }
 }

@@ -4,27 +4,50 @@ import styled from 'styled-components';
 
 class CarContainer extends Component {
   state = {
-    profile: 'https://imgct2.aeplcdn.com/img/400/cars/generic/Audi-RS5-Top-Audi-Car-In-India.png',
-    title: 'Car Card Title',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-  };
+    img: 'https://imgct2.aeplcdn.com/img/400/cars/generic/Audi-RS5-Top-Audi-Car-In-India.png',
+    showingInfoWindow: false,  //Hides or the shows the infoWindow
+    activeMarker: {},          //Shows the active marker upon click
+    selectedPlace: {},
+    zoom: 18,
+    };
 
   render() {
-    const { profile, title, description } = this.state;
+    const {
+      price,
+      manufactor,
+      model,
+      type,
+      releaseYear,
+      drivingDist,
+      seats,
+      drive,
+      fuelType,
+      address,
+      country,
+      company,
+    } = this.props.data;
+    const { img } = this.state;
     return (
       <Container>
         <ImageContainer>
-          <Profile src={profile} />
+          <Profile src={img} />
         </ImageContainer>
         <InfoContainer>
-          <Title>{title}</Title>
+          <Title>{manufactor} {model}</Title>
+          <h4>{price}DKK / Day</h4>
           <Description>
-            {description.length >= 350
-              ? description.substring(0, 350) + '...'
-              : description}
+            <div> Type: {type}</div>
+            <div> Release Year: {releaseYear}</div>
+            <div> Driving distance: {drivingDist}</div>
+            <div> Seats: {seats} </div>
+            <div> Drive: {drive}</div>
+            <div> Fuel Type: {fuelType}</div>
+            <div> Address: {address}</div>
+            <div> Country: {country}</div>
+            <div> Company: {company}</div>
           </Description>
-      </InfoContainer>
-    </Container>
+        </InfoContainer>
+      </Container>
     );
   }
 }
@@ -33,7 +56,7 @@ export default CarContainer;
 
 const Container = styled(Col)`
   background-color: white;
-  min-height: 15rem; max-height: 15rem;
+  min-height: 25rem; max-height: 50rem;
   margin: 1rem auto;
   border: 1px solid #ccc; border-radius: 3px;
   box-shadow: 2px 2px 2px #ccc;
@@ -58,7 +81,7 @@ const ImageContainer = styled.div`
 
 const Profile = styled.img`
   min-width: 100%; max-width: 100%;
-  min-height: 15rem; max-height: 15rem;
+  min-height: 10rem; max-height: 15rem;
   border: 1px solid transparent; border-radius: 3px;
 `;
 
@@ -69,15 +92,24 @@ const InfoContainer = styled.div`
   min-height: 100%; max-height: 100%;
 `;
 
-const Title = styled.h2`
+const Title = styled.h4`
   display: block;
-  text-align: center;
+  div-align: center;
 `;
 
-const Description = styled.p`
-  display: flex;
+const Description = styled.div`
+  display: inline;
   min-height: 10.5rem; max-height: 10.5rem;
   padding: 0 1rem;
   overflow: hidden;
+  margin-top: 10px;
+`;
+
+const Description2 = styled.div`
+  display: block;
+  min-height: 10.5rem; max-height: 10.5rem;
+  padding: 0 1rem;
+  overflow: hidden;
+  float: right;
 `;
 

@@ -12,8 +12,9 @@ import Results from './pages/Results'
 import CarPage from './pages/CarPage'
 
 export default class App extends Component {
-    state = { 
+    state = {
         token: "",
+        regNo: "AB19406",
     };
 
     render() {
@@ -23,14 +24,14 @@ export default class App extends Component {
                     <BrandBanner />
                     <Header isLoggedIn={true} />
                     <Switch>
-                        <Route exact path="/" render={() => <Home />} />
+                        <Route exact path="/" render={() => <Home regNo={this.state.regNo}/>} />
                         <Route path='/map' render={() => <Map />} />
-                        <Route path="/profile" render={() => <Profile superState={this.state} />} />
-                        <Route path="/login" render={() => <Login superState={this.state} />} />
+                        <Route path="/profile" render={() => <Profile superState={this.state.token} />} />
+                        <Route path="/login" render={() => <Login superState={this.state.token} />} />
                         <Route path="/register" render={() => <Register />} />
                         <Route path="/results" render={() => <Results />} />
-                        <Route path="/carpage" render={() => <CarPage />} />
-                        <Route component={NoMatch} />   
+                        <Route path="/carpage" render={() => <CarPage regNo={this.state.regNo} />} />
+                        <Route component={NoMatch} />
                     </Switch>
                 </div>
             </Router >
