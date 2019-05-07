@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { Container } from 'react-bootstrap';
+import { Container, DropdownButton, Dropdown } from 'react-bootstrap';
 import CarCard from '../components/results/CarCard'
 
 //YYYY-MM-DD
 
 class SearchBar extends Component {
     state = {
-        manufactor: '',
+        manufactor: 'manufactor',
         model: '',
         type: '',
         fuelType: '',
@@ -71,6 +71,16 @@ class SearchBar extends Component {
                 <Container style={styles.container} fluid={true} >
                     <form onSubmit={this.handleSubmit}>
                         <h5 style={{ color: 'black' }}>Search for your rental here:</h5>
+                        <DropdownButton
+                            id="dropdown-basic-button"
+                            title={this.state.manufactor}
+                            name="manufactor"
+                            onChange={this.handleChange}
+                        >
+                            <Dropdown.Item name="Action"></Dropdown.Item>
+                            <Dropdown.Item>Another action</Dropdown.Item>
+                            <Dropdown.Item>Something else</Dropdown.Item>
+                        </DropdownButton>
                         <select onChange={this.handleChange} name="manufactor" defaultValue="Manufactor">
                             <option name="all">All</option>
                             <option name="volvo">Volvo</option>
@@ -97,7 +107,7 @@ class SearchBar extends Component {
                             <option name="6">6</option>
                             <option name="7">7</option>
                         </select>
-                        <input type="number" name="price" onChange={this.handleChange} placeholder="Max price"/>
+                        <input type="number" name="price" onChange={this.handleChange} placeholder="Max price" />
                         <select onChange={this.handleChange} name="drive">
                             <option name="all">All</option>
                             <option name="manual">Manual</option >

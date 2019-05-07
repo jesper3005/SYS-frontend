@@ -4,15 +4,12 @@ import styled from 'styled-components';
 import CarCard from './CarCard';
 const url = 'https://fenonline.dk/SYS_Backend/api/car/all'
 
-
-
 class CarContainer extends Component {
   state = {
     data: [],
   };
 
   componentDidMount() {
-    // TODO:
     const data_promise = fetch(url).then(handleHttpErrors)
     data_promise.then(data=>this.setState({data}))
   }

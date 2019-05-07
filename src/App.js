@@ -6,8 +6,8 @@ import Register from './pages/Register';
 import Home from './pages/HomePage';
 import Map from './components/Car/Map'
 import NoMatch from './pages/PageNotFound'
+import Navbar from './components/Navbar'
 import Header from './components/Header'
-import BrandBanner from './components/Banner'
 import Results from './pages/Results'
 import CarPage from './pages/CarPage'
 
@@ -21,8 +21,8 @@ export default class App extends Component {
         return (
             <Router >
                 <div>
-                    <BrandBanner />
-                    <Header isLoggedIn={true} />
+                    <Header />
+                    <Navbar isLoggedIn={true} />
                     <Switch>
                         <Route exact path="/" render={() => <Home regNo={this.state.regNo}/>} />
                         <Route path='/map' render={() => <Map />} />

@@ -1,39 +1,16 @@
-import React from 'react';
-import { NavLink } from "react-router-dom";
-import '../styles/HeaderStyle.css'
+import React, { Component } from 'react';
+import '../styles/BrandBannerStyle.css'
 
-const Header = (props) => {
-    const isLoggedIn = props.username;
-    if(isLoggedIn) {
-      return  <HeaderLoggedIn />
+
+class Header extends Component {
+    render() { 
+        return ( 
+            <div className='header'>
+                <h3>Turtle Rental Service</h3>
+                <img  src={require('../assets/logo.png')} alt='Logo'/>
+            </div>
+        );
     }
-    return <HeaderNotLoggedIn />
-
 }
  
 export default Header;
-
-function HeaderLoggedIn(props) {
-    return (
-        <ul className="header">
-            <li><NavLink exact activeClassName="active" to="/">HOME</NavLink></li>
-            <li><NavLink activeClassName="active" to="/map">MAP</NavLink></li>
-            <li><NavLink activeClassName="active" to="/userPage">USER PAGE</NavLink></li>
-            <li><NavLink activeClassName="active" to="/adminPage">ADMIN</NavLink></li>
-        </ul>
-    )
-}
-
-function HeaderNotLoggedIn(props) {
-    return (
-        <ul className="header">
-            <li><NavLink exact activeClassName="active" to="/">HOME</NavLink></li>
-            <li><NavLink activeClassName="active" to="/results">RESULTS DEMO</NavLink></li>
-            <li><NavLink activeClassName="active" to="/map">MAP</NavLink></li>
-            <li><NavLink activeClassName="active" to="/profile">PROFILE</NavLink></li>
-            <li><NavLink activeClassName="active" to="/login">LOGIN</NavLink></li>
-            <li><NavLink activeClassName="active" to="/register">SIGN UP</NavLink></li>
-        </ul>
-    )
-}
-

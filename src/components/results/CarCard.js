@@ -17,8 +17,6 @@ const CarCard = ({ profile, manufactor, model, address, price, regno, regNo}) =>
   </Container>
 );
 
-
-
 const Container = styled(Col)`
   background-color: white;
   min-height: 15rem; max-height: 15rem;
@@ -26,12 +24,7 @@ const Container = styled(Col)`
   border: 1px solid #ccc; border-radius: 3px;
   box-shadow: 2px 2px 2px #ccc;
   cursor: pointer;
-  position: relative;
-  margin-left: 380px;
-  align-items: center;
-  text-align: center;
 `;
-
 Container.defaultProps = {
   xs: 11, sm: 11, md: 11, lg: 11,
 };
@@ -60,7 +53,6 @@ const InfoContainer = styled.div`
   display: block;
   min-width: 50%; max-width: 50%;
   min-height: 100%; max-height: 100%;
-  margin-top: 50px;
 `;
 
 const Title = styled.h2`
@@ -68,12 +60,12 @@ const Title = styled.h2`
   text-align: center;
 `;
 
-// const Description = styled.p`
-//   display: flex;
-//   min-height: 10.5rem; max-height: 10.5rem;
-//   padding: 0 1rem;
-//   overflow: hidden;
-// `;
+const Description = styled.p`
+  display: flex;
+  min-height: 10.5rem; max-height: 10.5rem;
+  padding: 0 1rem;
+  overflow: hidden;
+`;
 
 export default withRouter(CarCard);
 

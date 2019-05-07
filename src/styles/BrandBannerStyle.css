@@ -1,9 +1,9 @@
-div.banner {
+div.header {
     display: flex;
     justify-content: center;
 }
 
-div.banner img {
+div.header img {
     height: 100px;
     width: 100px;
     border-color: red;
@@ -12,7 +12,7 @@ div.banner img {
     align-items: center;
 }
 
-div.banner h3 {
+div.header h3 {
     position: relative;
     top: 40px;
     font-size: 20px;
