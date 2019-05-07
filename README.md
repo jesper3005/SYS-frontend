@@ -14,6 +14,6 @@ npm install --save styled-components
 
 npm install --save reactstrap
 
-npm install --save react-google-maps
+npm install --save google-maps-react
 
 
