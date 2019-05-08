@@ -2,7 +2,7 @@ import React from 'react';
 import { Container, Row } from 'reactstrap';
 import styled from 'styled-components';
 
-import FormContainer from '../components/login/FormContainer';
+import FormContainer from '../components/login/FormContainer'
 
 const SignIn = () => (
   <Container fluid={true}>

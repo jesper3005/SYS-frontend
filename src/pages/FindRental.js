@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Col, Row } from 'reactstrap';
 import styled from 'styled-components';
-import CarCard from '../components/results/CarCard'
+import CarCard from '../components/findrental/CarCard'
 
 //YYYY-MM-DD
 
