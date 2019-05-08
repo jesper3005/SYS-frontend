@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Container, Row, Col } from 'reactstrap';
-import SellerContainer from '../components/Car/SellerContainer';
-import CarContainer from '../components/Car/CarContainer';
-import Map from '../components/Car/Map'
-import FormContainer from '../components/Car/FormContainer'
+import SellerContainer from '../components/car/SellerContainer';
+import CarContainer from '../components/car/CarContainer'
+import Map from '../components/car/Map'
+import FormContainer from '../components/car/FormContainer'
 class CarPage extends Component {
   state = { 
     data: [],

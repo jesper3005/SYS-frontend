@@ -6,7 +6,7 @@ div.link a {
     text-decoration: none;
     text-align: center;
     margin: 1px auto; 
-    background-color: #cf96969d;
+    background-color: #e4892e;
     border-style: solid;
     border-color: black;
     border-width: 1px;
@@ -16,6 +16,7 @@ div.link a {
 }
 
 div.link a:hover {
-    background-color: #f8a5a5;
+    background-color: #a56d35;
     cursor: pointer;
+    color: #00000088;
 }

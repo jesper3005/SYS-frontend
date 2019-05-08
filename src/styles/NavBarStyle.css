@@ -1,4 +1,5 @@
 ul.header {
+  position: sticky;
   list-style-type: none;
   width: 100%;
   margin: 0;
