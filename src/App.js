@@ -10,11 +10,12 @@ import Navbar from './components/Navbar'
 import Header from './components/Header'
 import Results from './pages/Results'
 import CarPage from './pages/CarPage'
+import FindRental from './pages/FindRental'
 
 export default class App extends Component {
     state = {
         token: "",
-        regNo: "AI95295",
+        regNo: "AJ65365",
     };
 
     render() {
@@ -24,13 +25,14 @@ export default class App extends Component {
                     <Header />
                     <Navbar isLoggedIn={true} />
                     <Switch>
-                        <Route exact path="/" render={() => <Home regNo={this.state.regNo}/>} />
+                        <Route exact path="/" render={() => <Home />} />
                         <Route path='/map' render={() => <Map />} />
                         <Route path="/profile" render={() => <Profile superState={this.state.token} />} />
                         <Route path="/login" render={() => <Login superState={this.state.token} />} />
                         <Route path="/register" render={() => <Register />} />
                         <Route path="/results" render={() => <Results />} />
                         <Route path="/carpage" render={() => <CarPage regNo={this.state.regNo} />} />
+                        <Route path="/findrental" render={() => <FindRental regNo={this.state.regNo}/>} />
                         <Route component={NoMatch} />
                     </Switch>
                 </div>

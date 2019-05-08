@@ -30,7 +30,6 @@ function HeaderNotLoggedIn(props) {
             <li><NavLink exact activeClassName="active" to="/">HOME</NavLink></li>
             <li><NavLink activeClassName="active" to="/results">RESULTS DEMO</NavLink></li>
             <li><NavLink activeClassName="active" to="/findrental">FIND RENTAL</NavLink></li>
-            <li><NavLink activeClassName="active" to="/map">MAP</NavLink></li>
             <li><NavLink activeClassName="active" to="/profile">PROFILE</NavLink></li>
             <li><NavLink activeClassName="active" to="/login">LOGIN</NavLink></li>
             <li><NavLink activeClassName="active" to="/register">SIGN UP</NavLink></li>

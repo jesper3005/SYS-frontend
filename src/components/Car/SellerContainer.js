@@ -58,6 +58,9 @@ const stars = rating => {
 const Container = styled(Col)`
   border-right: 1px solid #ccc;
   background-color: white;
+  display: block;
+  margin: 1rem auto;
+  border-style: solid;
 `;
 Container.defaultProps = {
   xs: 12, sm: 12, md: 4, lg: 3,

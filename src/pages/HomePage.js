@@ -7,7 +7,7 @@ class HomePage extends Component {
     render() { 
         return ( 
             <div>
-                <SearchBar {...this.props}/>
+                <h3>HomePage </h3>
             </div> 
         );
     }

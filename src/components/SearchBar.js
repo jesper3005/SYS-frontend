@@ -34,6 +34,7 @@ class SearchBar extends Component {
     getData = () => {
         const { toDate, fromDate } = this.state
         var url = `https://www.fenonline.dk/SYS_Backend/api/car/available/${fromDate}/${toDate}`
+        console.log(url)
         const data_promise = fetch(url).then(handleHttpErrors)
         data_promise.then(data => this.setState({ data: this.filterListOfCars(data) }))
     }

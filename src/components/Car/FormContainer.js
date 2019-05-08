@@ -103,11 +103,13 @@ Container.defaultProps = {
 };
 
 const Form = styled.form`
-  min-width: 95%; max-width: 95%;
+  min-width: 94%; max-width: 94%;
   min-height: 20rem; max-height: 20rem;
   left: 20px;
-  border: 1px solid #dc6e78;
-  background-color: #fbcfd2;
+  border: 1px solid lightgrey;
+  padding-left: 30px;
+  padding-top: 20px;
+  display: block;
 `;
 
 const Input = styled.input`
@@ -120,7 +122,7 @@ const Input = styled.input`
   color: white; background-color: #787878;
   outline: none;
   &::placeholder {
-    color: white;
+    color: lightgrey;
     padding-right: 0.5rem;
   }
 `;

@@ -1,5 +1,6 @@
 ul.header {
   list-style-type: none;
+  width: 100%;
   margin: 0;
   overflow: hidden;
   background-color:#f1f0eb;

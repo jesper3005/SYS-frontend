@@ -21,6 +21,7 @@ const Container = styled(Col)`
   background-color: white;
   min-height: 15rem; max-height: 15rem;
   margin: 1rem auto;
+  float: right;
   border: 1px solid #ccc; border-radius: 3px;
   box-shadow: 2px 2px 2px #ccc;
   cursor: pointer;
@@ -58,13 +59,6 @@ const InfoContainer = styled.div`
 const Title = styled.h2`
   display: block;
   text-align: center;
-`;
-
-const Description = styled.p`
-  display: flex;
-  min-height: 10.5rem; max-height: 10.5rem;
-  padding: 0 1rem;
-  overflow: hidden;
 `;
 
 export default withRouter(CarCard);

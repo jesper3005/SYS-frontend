@@ -85,10 +85,10 @@ export default GoogleApiWrapper(
 
 
 const mapStyles = {
-  width: '90%',
+  width: '89%',
   height: '99%',
   position: 'relative',
-  left: '3.5%',
+  left: '4.2%',
 };
 
 // handleChange = event => {
