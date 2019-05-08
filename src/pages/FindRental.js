@@ -9,18 +9,19 @@ class SearchBar extends Component {
     state = {
         fromDate: '',
         toDate: '',
-        manufactor: '',
+        manufactor: 'All',
         model: '',
-        price: '',
-        type: '',
-        fuelType: '',
-        seats: '',
-        drive: '',
+        price: 0.0,
+        type: 'All',
+        fuelType: 'All',
+        seats: 'All',
+        drive: 'All',
         data: [],
     }
 
     handleSubmit = event => {
         event.preventDefault();
+        console.log(this.state);
         this.getData()
     }
 
@@ -40,27 +41,28 @@ class SearchBar extends Component {
 
     filterListOfCars = (data) => {
         let filteredCars = data;
+        console.log(filteredCars);
         const { manufactor, model, type, fueltype, seats, price, drive } = this.state;
         if (manufactor !== "All") {
-            filteredCars.filter(car => car.manufactor === manufactor);
+            filteredCars = filteredCars.filter(car => car.manufactor === manufactor);
         }
         if (model !== "") {
-            filteredCars.filter(car => car.model === model);
+            filteredCars = filteredCars.filter(car => car.model === model);
         }
         if (type !== "All") {
-            filteredCars.filter(car => car.type === type);
+            filteredCars = filteredCars.filter(car => car.type === type);
         }
         if (fueltype !== "All") {
-            filteredCars.filter(car => car.fueltype === fueltype);
+            filteredCars = filteredCars.filter(car => car.fueltype === fueltype);
         }
         if (seats !== "All") {
-            filteredCars.filter(car => car.seats === seats);
+            filteredCars = filteredCars.filter(car => car.seats === seats);
         }
         if (price > 0.0) {
-            filteredCars.filter(car => car.price <= price);
+            filteredCars = filteredCars.filter(car => car.price <= price);
         }
         if (drive !== "All") {
-            filteredCars.filter(car => car.drive === drive);
+            filteredCars = filteredCars.filter(car => car.drive === drive);
         }
         return filteredCars;
     }

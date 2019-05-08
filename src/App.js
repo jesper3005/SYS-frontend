@@ -23,7 +23,7 @@ export default class App extends Component {
             <Router >
                 <div>
                     <Header />
-                    <Navbar isLoggedIn={true} />
+                    <Navbar isLoggedIn={this.state.token} />
                     <Switch>
                         <Route exact path="/" render={() => <Home />} />
                         <Route path='/map' render={() => <Map />} />
