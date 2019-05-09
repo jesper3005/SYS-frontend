@@ -1,6 +1,6 @@
-import React from './node_modules/react';
-import { Col } from './node_modules/reactstrap';
-import styled from './node_modules/styled-components';
+import React from 'react';
+import { Col } from 'reactstrap';
+import styled from 'styled-components';
 
 const BrandContainer = () => (
   <Container>

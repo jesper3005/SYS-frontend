@@ -62,7 +62,7 @@ const Form = styled.form`
     margin-top: 3rem;
   }
 
-  min-width: 90%; max-width: 90%;
+  min-width: 100%; max-width: 100%;
   min-height: 20rem; max-height: 20rem;
   padding: 1rem;
   border: 1px solid #dc6e78; border-radius: 2rem;
@@ -85,13 +85,13 @@ const Input = styled.input`
   outline: none;
   &::placeholder {
     color: white;
-    padding-left: 0rem;
+    padding-left: 0.5rem;
   }
 `;
 
 const Button = styled.button`
   display: block;
-  min-width: 50%; max-width: 50%;
+  min-width: 100%; max-width: 100%;
   min-height: 3rem; max-height: 3rem;
   margin: 0.5rem auto;
   font-size: 120%;
@@ -109,7 +109,7 @@ const Text = styled.p`
   }
   font-size: 170%;
   font-weight: bold;
-  color: black;
+  color: white;
 `;
 
 export default withRouter(FormContainer);

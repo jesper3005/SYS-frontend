@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../styles/BrandBannerStyle.css'
+import '../styles/HeaderStyle.css'
 
 
 class Header extends Component {

@@ -78,7 +78,9 @@ class FilterContainer extends Component {
 
 const Container = styled(Col)`
   background-color: #da777b;
+  float: left;
 `;
+
 Container.defaultProps = {
   xs: 12, sm: 12, md: 4, lg: 3,
 };
@@ -114,14 +116,5 @@ const Input = styled.input`
   }
 `;
 
-const Submit = styled.button`
-  display: block;
-  min-width: 100%; max-width: 100%;
-  min-height: 2.5rem; max-height: 2.5rem;
-  margin: 0.5rem auto;
-  border: 1px solid white; border-radius: 3px;
-  font-size: 120%;
-  color: white; background-color: #304f5f;
-`;
 
 export default FilterContainer;

@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import { Row } from 'reactstrap';
-import styled from 'styled-components';
-import CarCard from './CarCard';
+import React, { Component } from 'react'
+import { Row } from 'reactstrap'
+import styled from 'styled-components'
+import CarCard from './CarCard'
 const url = 'https://fenonline.dk/SYS_Backend/api/car/all'
 
 class CarContainer extends Component {

@@ -13,10 +13,16 @@ import FindRental from './pages/FindRental'
 export default class App extends Component {
     state = {
         token: "",
-        regNo: "AJ65365",
+        regNo: "",
     };
 
+    setRegno = (regNo) => {
+        this.setState({regNo});
+        console.log("Hello regno" + regNo) 
+    }
+
     render() {
+        console.log("render");
         return (
             <Router >
                 <div>
@@ -28,7 +34,7 @@ export default class App extends Component {
                         <Route path="/login" render={() => <Login superState={this.state.token} />} />
                         <Route path="/register" render={() => <Register />} />
                         <Route path="/carpage" render={() => <CarPage regNo={this.state.regNo} />} />
-                        <Route path="/findrental" render={() => <FindRental regNo={this.state.regNo}/>} />
+                        <Route path="/findrental" render={() => <FindRental regNo={this.state.regNo} setRegno={this.setRegno}/>} />
                         <Route component={NoMatch} />
                     </Switch>
                 </div>

@@ -32,12 +32,22 @@ class SearchBar extends Component {
         this.setState({ [name]: value });
     }
 
-    getData = () => {
+    getData = async () => {
         const { fromDate, toDate } = this.state
         var url = `https://www.fenonline.dk/SYS_Backend/api/car/available/${fromDate}/${toDate}`
-        const data_promise = fetch(url).then(handleHttpErrors)
-        data_promise.then(data => this.setState({ data: this.filterListOfCars(data) }))
+        const data = await fetch(url).then(handleHttpErrors);
+        this.props.setRegno("AJ65365");
+        // const data_promise = await fetch(url).then(handleHttpErrors)
+        this.setState({ data: this.filterListOfCars(data) })
     }
+
+    // getData = () => {
+    //     const { fromDate, toDate } = this.state
+    //     var url = `https://www.fenonline.dk/SYS_Backend/api/car/available/${fromDate}/${toDate}`
+    //     const data = fetch(url).then(handleHttpErrors);
+    //     const data_promise = fetch(url).then(handleHttpErrors)
+    //     data_promise.then(data => this.setState({ data: this.filterListOfCars(data) }))
+    // }
 
     filterListOfCars = (data) => {
         let filteredCars = data;

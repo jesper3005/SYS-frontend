@@ -2,8 +2,9 @@ import React from 'react';
 import { withRouter, Link } from 'react-router-dom';
 import { Col, Badge } from 'reactstrap';
 import styled from 'styled-components';
+import selected from '../utils/selectedCar'
 
-const CarCard = ({ profile, manufactor, model, address, price, regno, regNo}) => (
+const CarCard = ({ profile, manufactor, model, address, price, regno}) => (
   <Container>
     <ImageContainer>
       <Profile src={profile} />
@@ -12,7 +13,7 @@ const CarCard = ({ profile, manufactor, model, address, price, regno, regNo}) =>
       <Title>{manufactor} {model} <Badge color="success">Available</Badge></Title> 
       <h4> {price}DKK / Day </h4>
       <p>{address}</p>
-      <Link to={'/carpage'} onClick={() => regNo = regno}>Go to car {regno}</Link> 
+      <Link to={'/carpage'} onClick={() => selected.setSelectedCar(regno) }>Go to car {regno}</Link> 
     </InfoContainer>
   </Container>
 );
@@ -21,7 +22,7 @@ const Container = styled(Col)`
   background-color: white;
   min-height: 15rem; max-height: 15rem;
   margin: 1rem auto;
-  float: right;
+  float: left;
   border: 1px solid #ccc; border-radius: 3px;
   box-shadow: 2px 2px 2px #ccc;
   cursor: pointer;
