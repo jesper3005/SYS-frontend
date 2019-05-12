@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Col } from 'reactstrap';
 import styled from 'styled-components';
+import StarRatings from 'react-star-ratings'
 
 class ProfileContainer extends Component {
   state = {
@@ -8,8 +9,15 @@ class ProfileContainer extends Component {
     name: '',
     email: '',
     phone: '',
-    driverLicences: ''
+    driverLicences: '',
+    rating: 4,
   };
+
+  changeRating( newRating ) {
+    this.setState({
+      rating: newRating
+    });
+  }
 
   componentDidMount() {
     const data = fetchUserData();
@@ -60,6 +68,13 @@ class ProfileContainer extends Component {
           />
           <Submit type="submit">Save Changes</Submit>
         </Form>
+        <StarRatings
+          rating={this.state.rating}
+          starRatedColor="blue"
+          changeRating={this.changeRating}
+          numberOfStars={6}
+          name='rating'
+        />
       </Container>
     );
   }
