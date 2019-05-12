@@ -9,6 +9,7 @@ import Navbar from './components/Navbar'
 import Header from './components/Header'
 import CarPage from './pages/CarPage'
 import FindRental from './pages/FindRental'
+import RentOutCar from './pages/RentOutCar'
 
 export default class App extends Component {
     state = {
@@ -22,7 +23,6 @@ export default class App extends Component {
     }
 
     render() {
-        console.log("render");
         return (
             <Router >
                 <div>
@@ -34,7 +34,8 @@ export default class App extends Component {
                         <Route path="/login" render={() => <Login superState={this.state.token} />} />
                         <Route path="/register" render={() => <Register />} />
                         <Route path="/carpage" render={() => <CarPage regNo={this.state.regNo} />} />
-                        <Route path="/findrental" render={() => <FindRental regNo={this.state.regNo} setRegno={this.setRegno}/>} />
+                        <Route path="/find-rental" render={() => <FindRental regNo={this.state.regNo} setRegno={this.setRegno}/>} />
+                        <Route path="/rent-out-car" render={() => <RentOutCar />} />
                         <Route component={NoMatch} />
                     </Switch>
                 </div>

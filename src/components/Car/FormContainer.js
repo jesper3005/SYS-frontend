@@ -2,30 +2,47 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { Col } from 'reactstrap';
 import styled from 'styled-components';
+import selected from '../utils/selectedCar'
 
 class FormContainer extends Component {
   state = {
-    from: '',
-    to: '',
-    firstName: '',
-    lastName: '',
-    phone: '',
-    email: '',
-    driverLicenseNumber: '',
-    birthDate: '',
+    startDate: '',
+    endDate: '',
+    // firstName: '',
+    // lastName: '',
+    // phone: '',
+    // email: '',
+    // driverLicenseNumber: '',
+    // birthDate: '',
   };
 
   handleSubmit = event => {
     event.preventDefault();
-    this.props.history.push('/result');
+    const regno = selected.getSelectedCar();
+    const { company } = this.props.data
+    //alert(JSON.stringify(regno + company))
+    this.bookCar();
   };
 
   handleChange = event => {
-    this.setState({ [event.target.name]: event.target.value });
+    const target = event.target;
+    const value = target.value;
+    const name = target.name;
+    this.setState({ [name]: value });
   };
 
+  bookCar = () => {
+    //const { company, regNo } = this.props.data;
+    const { company } = this.props.data
+    const regNo = selected.getSelectedCar();
+    const { startDate, endDate} = this.state;
+    var url = `https://www.fenonline.dk/SYS_Backend/api/car/rent/${company}/${regNo}/${startDate}/${endDate}`
+    alert(url)
+    //fetch(url).then(handleHttpErrors)
+  }
+
   render() {
-    const { from, to, firstName, lastName, email,
+    const { startDate, endDate, firstName, lastName, email,
       driverLicenseNumber, birthDate
     } = this.state;
     return (
@@ -33,14 +50,15 @@ class FormContainer extends Component {
         <Form onSubmit={this.handleSubmit}>
           <Input
             type="date"
-            name="from"
-            value={from}
+            name="startDate"
+            value={startDate}
+
             onChange={this.handleChange}
           />
           <Input
             type="date"
-            name="to"
-            value={to}
+            name="endDate"
+            value={endDate}
             onChange={this.handleChange}
           />
           <Input
@@ -60,6 +78,7 @@ class FormContainer extends Component {
           <Input
             type="phone"
             name="phone"
+
             value={lastName}
             onChange={this.handleChange}
             placeholder="Phone Number"
@@ -90,6 +109,15 @@ class FormContainer extends Component {
       </Container>
     );
   }
+}
+
+export default withRouter(FormContainer);
+
+function handleHttpErrors(res) {
+  if (!res.ok) {
+      return Promise.reject({ status: res.status, fullError: res.json() })
+  }
+  return res.json();
 }
 
 const Container = styled(Col)`
@@ -137,4 +165,3 @@ const Submit = styled.button`
   color: white; background-color: #787878;
 `;
 
-export default withRouter(FormContainer);

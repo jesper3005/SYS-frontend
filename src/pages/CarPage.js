@@ -25,7 +25,7 @@ class CarPage extends Component {
           <SellerContainer data={this.state.data} />
           <Col xs={12} sm={12} md={8} lg={9}>
             <CarContainer data={this.state.data}/>
-            <FormContainer />
+            <FormContainer data={this.state.data}/>
             <Map data={this.state.data} />
           </Col>
         </Row>

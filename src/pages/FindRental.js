@@ -5,7 +5,7 @@ import CarCard from '../components/findrental/CarCard'
 
 //YYYY-MM-DD
 
-class SearchBar extends Component {
+class FindRental extends Component {
     state = {
         fromDate: '',
         toDate: '',
@@ -136,7 +136,7 @@ class SearchBar extends Component {
 }
 
 
-export default SearchBar;
+export default FindRental;
 
 const carCardItems = (data, regNo) => {
     const items = data.map(c =>
@@ -161,7 +161,7 @@ FormContainer.defaultProps = {
 };
 
 const Container = styled(Row)`
-  background-color: red;
+  background-color: lightgrey;
   position: relative;
   margin: 0rem auto;
   width: 70%;

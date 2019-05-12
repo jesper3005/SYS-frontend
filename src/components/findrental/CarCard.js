@@ -4,16 +4,17 @@ import { Col, Badge } from 'reactstrap';
 import styled from 'styled-components';
 import selected from '../utils/selectedCar'
 
-const CarCard = ({ profile, manufactor, model, address, price, regno}) => (
+const CarCard = ({ profile, manufactor, model, address, price, regno, company}) => (
   <Container>
     <ImageContainer>
       <Profile src={profile} />
     </ImageContainer>
     <InfoContainer>
       <Title>{manufactor} {model} <Badge color="success">Available</Badge></Title> 
-      <h4> {price}DKK / Day </h4>
-      <p>{address}</p>
-      <Link to={'/carpage'} onClick={() => selected.setSelectedCar(regno) }>Go to car {regno}</Link> 
+      <h4>Price: {price}DKK / Day </h4>
+      <p>Address: {address}</p>
+      <p>Company: {company}</p>
+      <Link to={'/carpage'} onClick={() => selected.setSelectedCar(regno)}>Go to car {regno}</Link> 
     </InfoContainer>
   </Container>
 );
