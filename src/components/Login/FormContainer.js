@@ -36,6 +36,7 @@ class FormContainer extends Component {
       return res.json();
     }).then(data => {
       this.props.handleToken(data.token);
+      alert(JSON.stringify(data))
       alert("You have succesfully logged in!" + data.token);
       this.props.history.push('/profile');
     }).catch(error => alert(error));

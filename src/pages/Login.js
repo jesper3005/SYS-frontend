@@ -24,7 +24,7 @@ export default Login;
 //     <BrandRow>
 //     </BrandRow>
 //     <FormRow>
-//       <FormContainer handleToken={this.props.handleToken} />
+//       <FormContainer handleToken={props.handleToken} />
 //     </FormRow>
 //   </Container>
 // );

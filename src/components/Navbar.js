@@ -16,7 +16,7 @@ export default Header;
 
 function HeaderLoggedIn() {
     return (
-        <ul className="header">
+        <ul className="navbar">
             <li><NavLink exact activeClassName="active" to="/">HOME</NavLink></li>
             <li><NavLink activeClassName="active" to="/find-rental">FIND RENTAL</NavLink></li>
             <li><NavLink activeClassName="active" to="/rent-out-car">RENT OUT YOUR CAR</NavLink></li>
@@ -27,7 +27,7 @@ function HeaderLoggedIn() {
 
 function HeaderNotLoggedIn() {
     return (
-        <ul className="header">
+        <ul className="navbar">
             <li><NavLink exact activeClassName="active" to="/">HOME</NavLink></li>
             <li><NavLink activeClassName="active" to="/find-rental">FIND RENTAL</NavLink></li>
             <li><NavLink activeClassName="active" to="/login">LOGIN</NavLink></li>

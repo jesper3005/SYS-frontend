@@ -10,6 +10,7 @@ import Header from './components/Header'
 import CarPage from './pages/CarPage'
 import FindRental from './pages/FindRental'
 import RentOutCar from './pages/RentOutCar'
+import CarBooked from './pages/receipts/CarBooked'
 
 export default class App extends Component {
     state = {
@@ -40,6 +41,7 @@ export default class App extends Component {
                         <Route path="/carpage" render={() => <CarPage regNo={this.state.regNo} />} />
                         <Route path="/find-rental" render={() => <FindRental regNo={this.state.regNo}/>} />
                         <Route path="/rent-out-car" render={() => <RentOutCar />} />
+                        <Route path="/car-booked-receipt" render={() => <CarBooked />}/>
                         <Route component={NoMatch} />
                     </Switch>
                 </div>
