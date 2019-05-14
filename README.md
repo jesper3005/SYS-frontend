@@ -16,4 +16,4 @@ npm install --save reactstrap
 
 npm install --save google-maps-react
 
-npm i react-star-ratings
+npm install react-star-rating-component --save

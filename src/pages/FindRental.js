@@ -120,13 +120,12 @@ class FindRental extends Component {
                     </Form>
                 </FormContainer>
                 <Container>
-                    {carCardItems(this.state.data, this.props.regNo)}
+                    {carCardItems(this.state.data)}
                 </Container>
             </div>
         );
     }
 }
-
 
 export default FindRental;
 
@@ -145,7 +144,7 @@ function handleHttpErrors(res) {
 }
 
 const FormContainer = styled(Col)`
-  background-color: #da777b;
+  background-color: #138D75;
   float: left;
   height: 100vh;
 `;

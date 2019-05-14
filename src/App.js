@@ -21,6 +21,10 @@ export default class App extends Component {
         this.setState({ token: token})
     }
 
+    handleRegNo = (regNo) => {
+        this.setState({ regNo: regNo})
+    }
+
     render() {
         console.log(this.state.token);
         return (
@@ -31,10 +35,10 @@ export default class App extends Component {
                     <Switch>
                         <Route exact path="/" render={() => <Home />} />
                         <Route path="/profile" render={() => <Profile userToken={this.state.token} />} />
-                        <Route path="/login" render={() => <Login userToken={this.state.token} />} />
+                        <Route path="/login" render={() => <Login handleToken={this.handleToken} />} />
                         <Route path="/register" render={() => <Register />} />
                         <Route path="/carpage" render={() => <CarPage regNo={this.state.regNo} />} />
-                        <Route path="/find-rental" render={() => <FindRental regNo={this.state.regNo} setRegno={this.setRegno}/>} />
+                        <Route path="/find-rental" render={() => <FindRental regNo={this.state.regNo}/>} />
                         <Route path="/rent-out-car" render={() => <RentOutCar />} />
                         <Route component={NoMatch} />
                     </Switch>
