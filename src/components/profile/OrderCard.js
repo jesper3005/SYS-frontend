@@ -3,7 +3,6 @@ import { Col } from 'reactstrap';
 import styled from 'styled-components';
 import StarRatingComponent from 'react-star-rating-component';
 
-
 class OrderCard extends Component {
   state = {
     created: '',
@@ -13,12 +12,12 @@ class OrderCard extends Component {
   }
 
   onStarClick(nextValue, prevValue, name) {
-    this.setState({rating: nextValue});
+    this.setState({ rating: nextValue });
   }
 
   componentDidMount() {
     const { created, start, end } = this.props
-    this.setState({created, start, end})
+    this.setState({ created, start, end })
   }
 
   render() {
@@ -28,7 +27,7 @@ class OrderCard extends Component {
         <Info><Label>Created:</Label> {created}</Info>
         <Info><Label>Start Period:</Label> {start}</Info>
         <Info><Label>End Period:</Label> {end}</Info>
-        <StarRatingComponent 
+        <StarRatingComponent
           name="rating"
           starCount={6}
           value={this.state.rating}
@@ -39,15 +38,7 @@ class OrderCard extends Component {
   }
 }
 
-// export default OrderCard;
-
-// const OrderCard = ({ created, start, end }) => (
-//   <Container>
-//     <Info><Label>Created:</Label> {created}</Info>
-//     <Info><Label>Start Period:</Label> {start}</Info>
-//     <Info><Label>End Period:</Label> {end}</Info>
-//   </Container>
-// );
+export default OrderCard;
 
 const Container = styled(Col)`
   display: inline-block;
@@ -71,15 +62,3 @@ const Label = styled.label`
   font-weight: bold;
 `;
 
-const RatingContainer = styled.div`
-  position: absolute; bottom: 0;
-  padding: 0.25rem;
-`;
-
-const Star = styled.span`
-  margin: 0 0.25rem;
-  font-size: 150%;
-  color: ${props => props.marked ? 'orange' : '#ccc'};
-`;
-
-export default OrderCard;

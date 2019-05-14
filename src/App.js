@@ -17,13 +17,12 @@ export default class App extends Component {
         regNo: "",
     };
 
-    setRegno = (regNo) => {
-        this.setState({regNo});
-        console.log("Hello regno" + regNo) 
+    handleToken = (token) => {
+        this.setState({ token: token})
     }
 
     render() {
-        console.log("render");
+        console.log(this.state.token);
         return (
             <Router >
                 <div>
@@ -31,8 +30,8 @@ export default class App extends Component {
                     <Navbar isLoggedIn={this.state.token} />
                     <Switch>
                         <Route exact path="/" render={() => <Home />} />
-                        <Route path="/profile" render={() => <Profile superState={this.state.token} />} />
-                        <Route path="/login" render={() => <Login superState={this.state.token} />} />
+                        <Route path="/profile" render={() => <Profile userToken={this.state.token} />} />
+                        <Route path="/login" render={() => <Login userToken={this.state.token} />} />
                         <Route path="/register" render={() => <Register />} />
                         <Route path="/carpage" render={() => <CarPage regNo={this.state.regNo} />} />
                         <Route path="/find-rental" render={() => <FindRental regNo={this.state.regNo} setRegno={this.setRegno}/>} />

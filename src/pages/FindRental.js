@@ -36,18 +36,10 @@ class FindRental extends Component {
         const { fromDate, toDate } = this.state
         var url = `https://www.fenonline.dk/SYS_Backend/api/car/available/${fromDate}/${toDate}`
         const data = await fetch(url).then(handleHttpErrors);
-        this.props.setRegno("AJ65365");
         // const data_promise = await fetch(url).then(handleHttpErrors)
         this.setState({ data: this.filterListOfCars(data) })
     }
 
-    // getData = () => {
-    //     const { fromDate, toDate } = this.state
-    //     var url = `https://www.fenonline.dk/SYS_Backend/api/car/available/${fromDate}/${toDate}`
-    //     const data = fetch(url).then(handleHttpErrors);
-    //     const data_promise = fetch(url).then(handleHttpErrors)
-    //     data_promise.then(data => this.setState({ data: this.filterListOfCars(data) }))
-    // }
 
     filterListOfCars = (data) => {
         let filteredCars = data;
@@ -83,9 +75,9 @@ class FindRental extends Component {
                 <FormContainer>
                     <Form onSubmit={this.handleSubmit}>
                         <h6>Choose a start and end date</h6>
-                        <DatePicker type="date" name='fromDate' onChange={this.handleChange} />
+                        <DatePicker type="date" name='fromDate' onChange={this.handleChange} required/>
                         -
-                        <DatePicker type="date" name='toDate' onChange={this.handleChange} />
+                        <DatePicker type="date" name='toDate' onChange={this.handleChange} required/>
                         <h6>Choose a manufactor:</h6>
                         <Select onChange={this.handleChange} name="manufactor">
                             <option>All</option>
@@ -154,6 +146,8 @@ function handleHttpErrors(res) {
 
 const FormContainer = styled(Col)`
   background-color: #da777b;
+  float: left;
+  height: 100vh;
 `;
 
 FormContainer.defaultProps = {
@@ -161,16 +155,14 @@ FormContainer.defaultProps = {
 };
 
 const Container = styled(Row)`
-  background-color: lightgrey;
-  position: relative;
   margin: 0rem auto;
   width: 70%;
-  float: right;
-
+  float: left;
+  padding-left: 10%;
 `;
 
 const Form = styled.form`
-  display: block;
+  display: inline;
   margin: 0rem auto;
 `;
 

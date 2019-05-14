@@ -18,9 +18,6 @@ class FormContainer extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    const regno = selected.getSelectedCar();
-    const { company } = this.props.data
-    //alert(JSON.stringify(regno + company))
     this.bookCar();
   };
 
@@ -42,8 +39,7 @@ class FormContainer extends Component {
 
   render() {
     const { startDate, endDate, firstName, lastName, email,
-      driverLicenseNumber, birthDate
-    } = this.state;
+      driverLicenseNumber, birthDate } = this.state;
     return (
       <Container>
         <Form onSubmit={this.handleSubmit}>
@@ -51,7 +47,6 @@ class FormContainer extends Component {
             type="date"
             name="startDate"
             value={startDate}
-
             onChange={this.handleChange}
           />
           <Input
@@ -77,7 +72,6 @@ class FormContainer extends Component {
           <Input
             type="phone"
             name="phone"
-
             value={lastName}
             onChange={this.handleChange}
             placeholder="Phone Number"

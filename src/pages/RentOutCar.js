@@ -94,6 +94,7 @@ class FormContainer extends Component {
             value={manufactor}
             onChange={this.handleChange}
             placeholder="What's the Manufactor?"
+            required
           />
           <Input
             type="text"
@@ -101,13 +102,16 @@ class FormContainer extends Component {
             value={model}
             onChange={this.handleChange}
             placeholder="What model do you own?"
+            required
           />
           <Input
             type="number"
             name="seats"
+            min={0}
             value={seats}
             onChange={this.handleChange}
             placeholder="Number of seats"
+            required
           />
           <Input
             type="text"
@@ -115,6 +119,7 @@ class FormContainer extends Component {
             value={regNo}
             onChange={this.handleChange}
             placeholder="Registration no."
+            required
           />
           <Input
             type="text"
@@ -122,6 +127,7 @@ class FormContainer extends Component {
             value={driveDist}
             onChange={this.handleChange}
             placeholder="Driving distance (km)"
+            required
           />
           <Input
             type="text"
@@ -129,27 +135,25 @@ class FormContainer extends Component {
             value={productionYear}
             onChange={this.handleChange}
             placeholder="Production year"
+            required
           />
-          <Input
-            type="text"
-            name="drive"
-            value={drive}
-            onChange={this.handleChange}
-            placeholder="Drive"
-          />
-          <Input
-            type="text"
-            name="fuelType"
-            value={fuelType}
-            onChange={this.handleChange}
-            placeholder="Fuel Type"
-          />
+          <Select onChange={this.handleChange} name="drive" required>
+            <option value="choice">Choose the drive</option>
+            <option value="manuel">Manuel</option>
+            <option value="automatic">Automatic</option>
+          </Select>
+          <Select onChange={this.handleChange} name="fuelType" required>
+            <option value="choice">Choose a fueltype</option>
+            <option value="gas">Gas</option>
+            <option value="eletric">Electric</option>
+          </Select>
           <Input
             type="text"
             name="address"
             value={address}
             onChange={this.handleChange}
             placeholder="Address"
+            required
           />
           <Input
             type="text"
@@ -157,6 +161,7 @@ class FormContainer extends Component {
             value={country}
             onChange={this.handleChange}
             placeholder="Country"
+            required
           />
           <Submit type="submit">Submit</Submit>
         </Form>
@@ -169,6 +174,7 @@ export default withRouter(FormContainer);
 
 const Container = styled(Col)`
 `;
+
 Container.defaultProps = {
   xs: 12, sm: 12, md: 12, lg: 12,
 };
@@ -204,10 +210,15 @@ const Submit = styled.button`
   color: white; background-color: #787878;
 `;
 
-
-function handleHttpErrors(res) {
-  if (!res.ok) {
-    return Promise.reject({ status: res.status, fullError: res.json() })
+const Select = styled.select`
+  display: inline-block;
+  min-width: 32%; max-width: 32%;
+  min-height: 3rem; max-height: 3rem;
+  margin: 1rem 0.5rem;
+  font-size: 120%;
+  border: 1px solid #787878; border-radius: 5px;
+  color: white; background-color: #787878;
+  &::placeholder {
+    color: #dddddd;
   }
-  return res.json();
-}
+`;

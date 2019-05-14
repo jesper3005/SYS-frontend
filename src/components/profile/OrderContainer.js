@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import { Col } from 'reactstrap';
 import styled from 'styled-components';
-import StarRatingComponent from 'react-star-rating-component';
-
-
 import OrderCard from './OrderCard';
 
 class OrderContainer extends Component {
@@ -14,12 +11,10 @@ class OrderContainer extends Component {
   };
 
   onStarClick(nextValue, prevValue, name) {
-    this.setState({rating: nextValue});
+    this.setState({ rating: nextValue });
   }
 
   componentDidMount() {
-    // TODO:
-
     const data = fetchOrders();
     this.setState({ data });
   }
@@ -37,9 +32,10 @@ class OrderContainer extends Component {
   }
 }
 
+export default OrderContainer;
+
 const fetchOrders = () => {
   // TODO:
-
   return [
     {
       created: '01-01-2001',
@@ -75,8 +71,7 @@ const Container = styled(Col)`
   background-color: white;
   box-shadow: 2px 2px 2px #ccc;
 `;
+
 Container.defaultProps = {
   xs: 12, sm: 12, md: 12, lg: 12,
 };
-
-export default OrderContainer;

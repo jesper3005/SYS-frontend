@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { Col } from 'reactstrap';
-import styled from 'styled-components';
-import StarRatingComponent from 'react-star-rating-component';
-
+import styled from 'styled-components'; 
 
 class ProfileContainer extends Component {
   state = {

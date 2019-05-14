@@ -1,8 +1,8 @@
 class SelectedCar {
     constructor() {
         this.SelectedCar = "";
-        this.SelectedCompany = "";
     }
+
     getSelectedCar = () => {
         return this.SelectedCar;
     }

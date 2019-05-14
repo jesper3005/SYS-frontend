@@ -1,15 +1,14 @@
 import React from 'react';
 import { Container, Row } from 'reactstrap';
 import styled from 'styled-components';
-
 import FormContainer from '../components/Login/FormContainer'
 
-const SignIn = () => (
+const SignIn = (props) => (
   <Container fluid={true}>
     <BrandRow>
     </BrandRow>
     <FormRow>
-      <FormContainer />
+      <FormContainer /* userToken={this.props.userToken} */ />
     </FormRow>
   </Container>
 );
@@ -24,7 +23,7 @@ const FormRow = styled(Row)`
   @media screen and (min-width: 768px) {
     border-top-right-radius: 10rem;
   }
-  background-color: #fff7f7;
+  background-color: #003663;
 `;
 
 export default SignIn;
