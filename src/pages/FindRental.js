@@ -140,7 +140,7 @@ export default FindRental;
 
 const carCardItems = (data, regNo) => {
     const items = data.map(c =>
-        <CarCard key={c.regno} {...c} regNo={regNo} />
+        <CarCard key={c.regno} {...c} regNo={regNo}/>
     );
     return items;
 };

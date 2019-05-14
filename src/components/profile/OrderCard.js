@@ -1,29 +1,53 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Col } from 'reactstrap';
 import styled from 'styled-components';
+import StarRatingComponent from 'react-star-rating-component';
 
-const OrderCard = ({ created, start, end, rating }) => (
-  <Container>
-    <Info><Label>Created:</Label> {created}</Info>
-    <Info><Label>Start Period:</Label> {start}</Info>
-    <Info><Label>End Period:</Label> {end}</Info>
-    <RatingContainer>{stars(rating)}</RatingContainer>
-  </Container>
-);
 
-const stars = rating => {
-  let items = [];
-  let i = 1;
-  while (i <= 5) {
-    items.push(
-      <Star key={i} marked={i <= rating}>
-        <i className="fa fa-star"></i>
-      </Star>
-    );
-    i++;
+class OrderCard extends Component {
+  state = {
+    created: '',
+    start: '',
+    end: '',
+    rating: 1,
   }
-  return items;
-};
+
+  onStarClick(nextValue, prevValue, name) {
+    this.setState({rating: nextValue});
+  }
+
+  componentDidMount() {
+    const { created, start, end } = this.props
+    this.setState({created, start, end})
+  }
+
+  render() {
+    const { created, start, end } = this.state;
+    return (
+      <Container>
+        <Info><Label>Created:</Label> {created}</Info>
+        <Info><Label>Start Period:</Label> {start}</Info>
+        <Info><Label>End Period:</Label> {end}</Info>
+        <StarRatingComponent 
+          name="rating"
+          starCount={6}
+          value={this.state.rating}
+          onStarClick={this.onStarClick.bind(this)}
+        />
+      </Container>
+    );
+  }
+}
+
+// export default OrderCard;
+
+// const OrderCard = ({ created, start, end }) => (
+//   <Container>
+//     <Info><Label>Created:</Label> {created}</Info>
+//     <Info><Label>Start Period:</Label> {start}</Info>
+//     <Info><Label>End Period:</Label> {end}</Info>
+//   </Container>
+// );
 
 const Container = styled(Col)`
   display: inline-block;

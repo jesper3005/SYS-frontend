@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Col } from 'reactstrap';
 import styled from 'styled-components';
+import StarRatingComponent from 'react-star-rating-component';
+
 
 import OrderCard from './OrderCard';
 
@@ -8,7 +10,12 @@ class OrderContainer extends Component {
   state = {
     selected: 0,
     data: [],
+    rating: 1,
   };
+
+  onStarClick(nextValue, prevValue, name) {
+    this.setState({rating: nextValue});
+  }
 
   componentDidMount() {
     // TODO:

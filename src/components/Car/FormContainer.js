@@ -37,8 +37,7 @@ class FormContainer extends Component {
     const regNo = selected.getSelectedCar();
     const { startDate, endDate} = this.state;
     var url = `https://www.fenonline.dk/SYS_Backend/api/car/rent/${company}/${regNo}/${startDate}/${endDate}`
-    alert(url)
-    //fetch(url).then(handleHttpErrors)
+    fetch(url).then(handleHttpErrors)
   }
 
   render() {

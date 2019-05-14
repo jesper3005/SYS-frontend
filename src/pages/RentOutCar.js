@@ -6,6 +6,10 @@ import styled from 'styled-components';
 class FormContainer extends Component {
   state = {
     manufactor: '',
+    price: 200,
+    type: 'SUV',
+    latitude: '55.5355',
+    longtitude: '13.371700000000033',
     model: '',
     seats: '',
     regNo: '',
@@ -14,13 +18,32 @@ class FormContainer extends Component {
     drive: '',
     fuelType: '',
     address: '',
-    streetNumber: '',
     country: '',
+    company: 'TTT',
+    username: 'TestUser',
   };
 
   handleSubmit = event => {
     event.preventDefault();
-    this.createCar()
+    const carDetails = {
+      regno: this.state.regNo,
+      price: this.state.price,
+      manufactor: this.state.manufactor,
+      model: this.state.model,
+      type: this.state.type,
+      releaseYear: this.state.productionYear,
+      drivingDist: this.state.driveDist,
+      seats: this.state.seats,
+      drive: this.state.drive,
+      fuelType: this.state.fuelType,
+      longitude: this.state.longtitude,
+      latitude: this.state.latitude,
+      address: this.state.address,
+      country: this.state.country,
+      company: this.state.company,
+      userName: this.state.username
+    };
+    this.createCar(carDetails)
   };
 
   handleChange = event => {
@@ -30,22 +53,21 @@ class FormContainer extends Component {
     this.setState({ [name]: value });
   };
 
-  createCar = () => {
-    const {
-      manufactor,
-      model,
-      seats,
-      regNo,
-      driveDist,
-      productionYear,
-      drive,
-      fuelType,
-      address,
-      country,
-    } = this.state;
-    var url = `https://www.fenonline.dk/SYS_Backend/api/car/createcar/${manufactor}/${model}/${seats}/${regNo}/${driveDist}/${productionYear}/${drive}/${fuelType}/${address}/${country}`
-    alert(url)
-    fetch(url).then(handleHttpErrors)
+  createCar = carDetails => {
+    const url = "https://fenonline.dk/SYS_Backend/api/car/listMyCar";
+    const putHeader = {
+      method: "POST",
+      body: JSON.stringify(carDetails),
+      headers: {
+        'Content-Type': "application/json"
+      },
+    };
+    fetch(url, putHeader).then(res => {
+      if (!res.ok) { throw Error(res.status + ": " + res.statusText); }
+      return res.json();
+    }).then(data => {
+      alert("You have listed your car for booking!");
+    }).catch(error => alert(error));
   }
 
   render() {
@@ -138,7 +160,7 @@ class FormContainer extends Component {
           />
           <Submit type="submit">Submit</Submit>
         </Form>
-    </Container>
+      </Container>
     );
   }
 }
@@ -185,7 +207,7 @@ const Submit = styled.button`
 
 function handleHttpErrors(res) {
   if (!res.ok) {
-      return Promise.reject({ status: res.status, fullError: res.json() })
+    return Promise.reject({ status: res.status, fullError: res.json() })
   }
   return res.json();
 }
