@@ -12,7 +12,7 @@ class ProfileContainer extends Component {
     rating: 1,
   };
 
-  onStarClick(nextValue, prevValue, name) {
+  onStarClick(nextValue) {
     this.setState({rating: nextValue});
   }
 
@@ -30,7 +30,7 @@ class ProfileContainer extends Component {
   };
 
   render() {
-    const { profile, name, email, phone, driverLicences } = this.state;
+    const { profile, name, email, phone, driverLicences } = this.props.userData;
     return (
       <Container>
         <Profile src={profile} />

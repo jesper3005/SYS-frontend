@@ -1,17 +1,35 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Container, Row } from 'reactstrap';
 import styled from 'styled-components';
 import FormContainer from '../components/Login/FormContainer'
 
-const SignIn = (props) => (
-  <Container fluid={true}>
-    <BrandRow>
-    </BrandRow>
-    <FormRow>
-      <FormContainer /* userToken={this.props.userToken} */ />
-    </FormRow>
-  </Container>
-);
+class Login extends Component {
+  render() {
+    return (
+      <Container fluid={true}>
+        <BrandRow>
+        </BrandRow>
+        <FormRow>
+          <FormContainer handleToken={this.props.handleToken} />
+        </FormRow>
+      </Container>
+    );
+  }
+}
+
+export default Login;
+
+// const SignIn = () => (
+//   <Container fluid={true}>
+//     <BrandRow>
+//     </BrandRow>
+//     <FormRow>
+//       <FormContainer handleToken={props.handleToken} />
+//     </FormRow>
+//   </Container>
+// );
+
+// export default SignIn;
 
 const BrandRow = styled(Row)`
   min-height: 13rem; max-height: 13rem;
@@ -26,4 +44,3 @@ const FormRow = styled(Row)`
   background-color: #003663;
 `;
 
-export default SignIn;

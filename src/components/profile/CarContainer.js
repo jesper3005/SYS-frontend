@@ -3,15 +3,14 @@ import { Col } from 'reactstrap';
 import styled from 'styled-components';
 
 
-class RentContainer extends Component {
+class CarContainer extends Component {
   state = {
     selected: 0,
     data: [],
   };
 
   componentDidMount() {
-    // TODO:
-
+    // TODO FETCH USERS CARS ON ID:
     const data = fetchCars();
     this.setState({ data });
   }
@@ -41,7 +40,7 @@ class RentContainer extends Component {
         </ListContainer>
         {car
         ? <InfoContainer>
-            <Title>{car.title}</Title>
+            <Title>{car.manufactor} {car.model}</Title>
             <Description>{car.description}</Description>
           </InfoContainer>
         : 'Please wait...'}
@@ -56,17 +55,20 @@ const fetchCars = () => {
   return [
     {
       profile: 'https://imgct2.aeplcdn.com/img/400/cars/generic/Audi-RS5-Top-Audi-Car-In-India.png',
-      title: 'Car 1',
+      title: 'Tesla',
+      manufactor: 'Tesla',
+      model: 'Model X',
+      test: 'test',
       description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
     },
     {
       profile: 'https://imgct2.aeplcdn.com/img/400/cars/generic/Audi-RS5-Top-Audi-Car-In-India.png',
-      title: 'Car 2',
+      title: 'Audi',
       description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
     },
     {
       profile: 'https://imgct2.aeplcdn.com/img/400/cars/generic/Audi-RS5-Top-Audi-Car-In-India.png',
-      title: 'Car 3',
+      title: 'Tesla',
       description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
     },
   ];
@@ -127,4 +129,4 @@ const Description = styled.p`
   overflow: auto;
 `;
 
-export default RentContainer;
+export default CarContainer;

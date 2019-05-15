@@ -15,7 +15,7 @@ class HomePage extends Component {
                     <Info>This is NOT a real rental service</Info>
                     <Info>Get a quickstart and find your rental by clicking the button below</Info>
                     <div className="link">
-                        <Link to='/findrental'>Find Your Rental</Link>
+                        <Link to='/find-rental'>Find Your Rental</Link>
                     </div>
                 </Container>
             </div>

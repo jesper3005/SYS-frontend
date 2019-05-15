@@ -14,6 +14,7 @@ const Container = styled(Col)`
   align-items: center;
   min-height: 12rem; max-height: 12rem;
 `;
+
 Container.defaultProps = {
   xs: 12, sm: 12, md: { size: 6, offset: 5, }, lg: { size: 4, offset: 7 },
 };

@@ -10,13 +10,36 @@ class OrderContainer extends Component {
     rating: 1,
   };
 
-  onStarClick(nextValue, prevValue, name) {
+  onStarClick(nextValue) {
     this.setState({ rating: nextValue });
+    this.rateCar();
   }
 
   componentDidMount() {
-    const data = fetchOrders();
-    this.setState({ data });
+    //TO DO: FETCH CARS FROM USER BY ID
+    var url = 'https://fenonline.dk/SYS_Backend/api/user/orders'
+    const getHeader = {
+      headers: {
+        "x-access-token": this.props.userToken
+      }
+    };
+
+    alert(this.props.userToken)
+
+    fetch(url, getHeader).then(res => {
+      if (!res.ok) { throw Error(res.status + ": " + res.statusText + " | You are not logged in as a User!"); }
+      return res.json();
+    }).then(data => {
+      this.setState({data: data})
+      return data.msg;
+    }).catch(error => {
+      console.log(error);
+      return error.message;
+    });
+  }
+
+  rateCar = () => {
+    //TO DO: Fetch Rating of order!
   }
 
   render() {

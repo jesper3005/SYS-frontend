@@ -4,7 +4,6 @@ import styled from 'styled-components';
 
 class CarContainer extends Component {
   state = {
-    img: 'https://imgct2.aeplcdn.com/img/400/cars/generic/Audi-RS5-Top-Audi-Car-In-India.png',
     showingInfoWindow: false,  //Hides or the shows the infoWindow
     activeMarker: {},          //Shows the active marker upon click
     selectedPlace: {},
@@ -26,25 +25,24 @@ class CarContainer extends Component {
       country,
       company,
     } = this.props.data;
-    const { img } = this.state;
     return (
       <Container>
         <ImageContainer>
-          <Profile src={img} />
+          <CarImage src={require('../../assets/car.svg')} />
         </ImageContainer>
         <InfoContainer>
           <Title>{manufactor} {model}</Title>
-          <h4>{price}DKK / Day</h4>
           <Description>
-            <div> Type: {type}</div>
-            <div> Release Year: {releaseYear}</div>
-            <div> Driving distance: {drivingDist}</div>
-            <div> Seats: {seats} </div>
-            <div> Drive: {drive}</div>
-            <div> Fuel Type: {fuelType}</div>
-            <div> Address: {address}</div>
-            <div> Country: {country}</div>
-            <div> Company: {company}</div>
+          <h4>{price}DKK / Day</h4>
+            <div> <strong> Type: </strong> {type}</div>
+            <div> <strong> Release Year: </strong> {releaseYear}</div>
+            <div> <strong> Driving distance: </strong> {drivingDist}</div>
+            <div> <strong> Seats: </strong> {seats} </div>
+            <div> <strong> Drive: </strong> {drive}</div>
+            <div> <strong> Fuel Type: </strong> {fuelType}</div>
+            <div> <strong> Address: </strong> {address}</div>
+            <div> <strong> Country: </strong> {country}</div>
+            <div> <strong> Company: </strong> {company}</div>
           </Description>
         </InfoContainer>
       </Container>
@@ -79,10 +77,11 @@ const ImageContainer = styled.div`
   min-height: 100%; max-height: 100%;
 `;
 
-const Profile = styled.img`
+const CarImage = styled.img`
   min-width: 100%; max-width: 100%;
   min-height: 10rem; max-height: 15rem;
   border: 1px solid transparent; border-radius: 3px;
+  padding-left: 20%;
 `;
 
 const InfoContainer = styled.div`
@@ -102,6 +101,6 @@ const Description = styled.div`
   min-height: 10.5rem; max-height: 10.5rem;
   padding: 0 1rem;
   overflow: hidden;
-  margin-top: 10px;
+  margin-top: 10%;
 `;
 

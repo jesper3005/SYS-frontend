@@ -35,9 +35,8 @@ class FormContainer extends Component {
       if (!res.ok) { throw Error(res.status + ": " + res.statusText + " | Wrong username or password!"); }
       return res.json();
     }).then(data => {
-      this.props.userToken = data.token;
-      alert("You have succesfully logged in!" + data.token);
-      this.props.history.push('/profile')
+      this.props.handleToken(data.token);
+      this.props.history.push('/profile');
     }).catch(error => alert(error));
   }
 

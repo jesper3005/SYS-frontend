@@ -77,7 +77,7 @@ class FilterContainer extends Component {
 }
 
 const Container = styled(Col)`
-  background-color: #da777b;
+  background-color: #747b9a;
   float: left;
 `;
 
