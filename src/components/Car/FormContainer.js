@@ -36,7 +36,11 @@ class FormContainer extends Component {
     fetch(url).then(handleHttpErrors).then(data => {
       alert("It worked")
       this.props.history.push('/car-booked-receipt');
+<<<<<<< HEAD
     }).catch(error => console.log(JSON.stringify(error)));
+=======
+    })
+>>>>>>> 64e1005fd02cde06294c0b5a69f83c9b18670d81
   }
 
   render() {
@@ -112,6 +116,8 @@ function handleHttpErrors(res) {
   if (!res.ok) {
       return Promise.reject({ status: res.status, fullError: res.json() })
   }
+  alert("It worked")
+  this.props.history.push('/profile');
   return res.json();
 }
 

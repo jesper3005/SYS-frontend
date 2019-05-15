@@ -29,7 +29,10 @@ function HeaderNotLoggedIn() {
     return (
         <ul className="navbar">
             <li><NavLink exact activeClassName="active" to="/">HOME</NavLink></li>
+<<<<<<< HEAD
             <li><NavLink activeClassName="active" to="/profile">PROFILE</NavLink></li>
+=======
+>>>>>>> 64e1005fd02cde06294c0b5a69f83c9b18670d81
             <li><NavLink activeClassName="active" to="/find-rental">FIND RENTAL</NavLink></li>
             <li><NavLink activeClassName="active" to="/login">LOGIN</NavLink></li>
             <li><NavLink activeClassName="active" to="/register">SIGN UP</NavLink></li>
