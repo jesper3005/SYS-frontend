@@ -39,7 +39,7 @@ class CarContainer extends Component {
         selected={i === selected}
         onClick={() => this.setState({ selected: i })}
       >
-        {car.title}
+        {car.manufactor} {car.model}
       </ListItem>
     );
 
@@ -56,9 +56,13 @@ class CarContainer extends Component {
         {car
           ? <InfoContainer>
             <Title>{car.manufactor} {car.model}</Title>
-            <Description>{car.description}</Description>
+            <Description><strong> Price: </strong> {car.price} pr/day</Description>
+            <Description><strong> Driving distance: </strong> {car.drivingDist}</Description>
+            <Description><strong> Type: </strong> {car.type}</Description>
+            <Description><strong> Seats: </strong> {car.seats}</Description>
+            <Description><strong> Address: </strong> {car.country}</Description>
           </InfoContainer>
-          : 'You have no cars!'}
+          : 'You have no cars!' }
       </Container>
     );
   }
@@ -118,7 +122,7 @@ const InfoContainer = styled.div`
 `;
 
 const Description = styled.p`
-  padding: 0 1rem;
-  min-height: 12rem; max-height: 12rem;
-  overflow: auto;
+  display: flex;
+  padding-left: 5%;
+  margin-bottom: 1%;
 `;

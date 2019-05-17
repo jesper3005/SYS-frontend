@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Col } from 'reactstrap';
-import styled from 'styled-components'; 
+import styled from 'styled-components';
 
 class ProfileContainer extends Component {
   state = {
@@ -14,7 +14,7 @@ class ProfileContainer extends Component {
   };
 
   onStarClick(nextValue) {
-    this.setState({rating: nextValue});
+    this.setState({ rating: nextValue });
   }
 
   componentDidMount() {
@@ -52,8 +52,10 @@ export default ProfileContainer;
 //Styles
 
 const Container = styled(Col)`
-  border-right: 1px solid #ccc;
+  margin: 1rem 0;
+  border: 1px solid #ccc; border-radius: 3px;
   background-color: white;
+  box-shadow: 1px 2px 2px #ccc;
 `;
 Container.defaultProps = {
   xs: 12, sm: 12, md: 4, lg: 3,
