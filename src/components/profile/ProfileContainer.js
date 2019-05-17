@@ -5,10 +5,11 @@ import styled from 'styled-components';
 class ProfileContainer extends Component {
   state = {
     profile: '',
-    name: '',
+    firstName: '',
+    lastName: '',
     email: '',
     phone: '',
-    driverLicences: '',
+    driverLicenseNumber: '',
     rating: 1,
   };
 
@@ -17,8 +18,7 @@ class ProfileContainer extends Component {
   }
 
   componentDidMount() {
-    const data = fetchUserData();
-    this.setState({ ...data });
+    //Fetch user rating
   }
 
   handleSubmit = event => {
@@ -30,57 +30,26 @@ class ProfileContainer extends Component {
   };
 
   render() {
-    const { profile, name, email, phone, driverLicences } = this.props.userData;
+    const { profile, firstName, lastName, email, phone, driverLicenseNumber } = this.props.userData;
     return (
       <Container>
         <Profile src={profile} />
         <Form onSubmit={this.handleSubmit}>
-          <Label>Name:</Label>
-          <Input
-            type="text"
-            name="name"
-            value={name}
-            onChange={this.handleChange}
-          />
-          <Label>Email:</Label>
-          <Input
-            type="text"
-            name="email"
-            value={email}
-            onChange={this.handleChange}
-          />
-          <Label>Phone:</Label>
-          <Input
-            type="phone"
-            name="phone"
-            value={phone}
-            onChange={this.handleChange}
-          />
-          <Label>driverLicences:</Label>
-          <Input
-            type="text"
-            name="name"
-            value={driverLicences}
-            onChange={this.handleChange}
-          />
-          <Submit type="submit">Save Changes</Submit>
+          <Label> <strong> First Name: </strong> {firstName}</Label>
+          <Label> <strong> Last Name: </strong> {lastName}</Label>
+          <Label> <strong> Email: </strong>{email}</Label>
+          <Label> <strong> Phone: </strong>{phone}</Label>
+          <Label> <strong> Driver licences: </strong> {driverLicenseNumber}</Label>
+
         </Form>
       </Container>
     );
   }
 }
 
-const fetchUserData = () => {
-  // TODO:
+export default ProfileContainer;
 
-  return {
-    profile: '',
-    name: 'John Doe',
-    email: 'john.doe@example.com',
-    phone: '+xx xxxxxx',
-    driverLicences: 'xxxxxxxxxx',
-  };
-};
+//Styles
 
 const Container = styled(Col)`
   border-right: 1px solid #ccc;
@@ -107,32 +76,6 @@ const Form = styled.form`
 const Label = styled.label`
   display: block;
   font-size: 120%;
-  font-weight: bold;
   margin-left: 0.5rem 0.25rem;
 `;
 
-const Input = styled.input`
-  display: block;
-  min-width: 100%; max-width: 100%;
-  min-height: 2.5rem; max-height: 2.5rem;
-  margin: 0.5rem auto;
-  border: 1px solid white; border-radius: 3px;
-  font-size: 120%;
-  color: white; background-color: #304f5f;
-`;
-
-const Submit = styled.button`
-  display: block;
-  min-width: 100%; max-width: 100%;
-  min-height: 2.5rem; max-height: 2.5rem;
-  margin: 0.5rem auto;
-  border: 1px solid white; border-radius: 3px;
-  font-size: 120%;
-  color: white; background-color: green;
-  outline: none;
-  &:active {
-    color: green; background-color: white;
-  }
-`;
-
-export default ProfileContainer;

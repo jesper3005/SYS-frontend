@@ -11,12 +11,25 @@ class Profile extends Component {
   }
 
   componentDidMount() {
-    //TO DO: Fetch data, kom så mads lav det endpoint......
     const token = this.props.userToken;
-    this.authentication(token);
-    // const url = ''
-    // const data_promise = fetch(url).then(handleHttpErrors)
-    // data_promise.then(userData => this.setState({ userData }))
+    const url = 'https://fenonline.dk/SYS_Backend/api/user/getuser/'
+
+    const getHeader = {
+      headers: {
+        "x-access-token": token
+      }
+    };
+
+    fetch(url, getHeader).then(res => {
+      if (!res.ok) { throw Error(res.status + ": " + res.statusText + " | Could not fetch user data!"); }
+      return res.json();
+    }).then(data => {
+      this.setState({userData: data})
+      return data.msg;
+    }).catch(error => {
+      console.log(error);
+      return error.message;
+    });
   }
 
   authentication = (token) => {
@@ -31,7 +44,7 @@ class Profile extends Component {
         <Row>
           <ProfileContainer userData={this.state.userData}/>
           <Col xs={12} sm={12} md={8} lg={9}>
-            <CarContainer userID={this.state.userData.id}/>
+            <CarContainer userToken={this.props.userToken}/>
             <OrderContainer userToken={this.props.userToken}/>
           </Col>
         </Row>
@@ -41,10 +54,3 @@ class Profile extends Component {
 }
 
 export default Profile;
-
-function handleHttpErrors(res) {
-	if (!res.ok) {
-		return Promise.reject({ status: res.status, fullError: res.json() })
-	}
-	return res.json();
-}

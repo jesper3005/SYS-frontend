@@ -6,19 +6,34 @@ import styled from 'styled-components';
 class CarContainer extends Component {
   state = {
     selected: 0,
-    data: [],
+    carData: [],
   };
 
   componentDidMount() {
-    // TODO FETCH USERS CARS ON ID:
-    const data = fetchCars();
-    this.setState({ data });
+    const token = this.props.userToken;
+    var url = 'https://fenonline.dk/SYS_Backend/api/user/cars'
+    const getHeader = {
+      headers: {
+        "x-access-token": token
+      }
+    };
+
+    fetch(url, getHeader).then(res => {
+      if (!res.ok) { throw Error(res.status + ": " + res.statusText + " | Could not fetch your cars!"); }
+      return res.json();
+    }).then(data => {
+      this.setState({ carData: data })
+      return data.msg;
+    }).catch(error => {
+      alert(error);
+      return error.message;
+    });
   }
 
   render() {
-    const { data, selected } = this.state;
+    const { carData, selected } = this.state;
 
-    const listItems = data.map((car, i) =>
+    const listItems = carData.map((car, i) =>
       <ListItem
         key={i} {...car}
         selected={i === selected}
@@ -28,7 +43,7 @@ class CarContainer extends Component {
       </ListItem>
     );
 
-    const car = data[selected];
+    const car = carData[selected];
 
     return (
       <Container>
@@ -39,40 +54,18 @@ class CarContainer extends Component {
           </List>
         </ListContainer>
         {car
-        ? <InfoContainer>
+          ? <InfoContainer>
             <Title>{car.manufactor} {car.model}</Title>
             <Description>{car.description}</Description>
           </InfoContainer>
-        : 'Please wait...'}
+          : 'You have no cars!'}
       </Container>
     );
   }
 }
+export default CarContainer;
 
-const fetchCars = () => {
-  // TODO:
-
-  return [
-    {
-      profile: 'https://imgct2.aeplcdn.com/img/400/cars/generic/Audi-RS5-Top-Audi-Car-In-India.png',
-      title: 'Tesla',
-      manufactor: 'Tesla',
-      model: 'Model X',
-      test: 'test',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-    },
-    {
-      profile: 'https://imgct2.aeplcdn.com/img/400/cars/generic/Audi-RS5-Top-Audi-Car-In-India.png',
-      title: 'Audi',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-    },
-    {
-      profile: 'https://imgct2.aeplcdn.com/img/400/cars/generic/Audi-RS5-Top-Audi-Car-In-India.png',
-      title: 'Tesla',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-    },
-  ];
-};
+//Styles
 
 const Container = styled(Col)`
   min-height: 15rem; max-height: 15rem;
@@ -81,6 +74,7 @@ const Container = styled(Col)`
   background-color: white;
   box-shadow: 2px 2px 2px #ccc;
 `;
+
 Container.defaultProps = {
   xs: 12, sm: 12, md: 12, lg: 12,
 };
@@ -128,5 +122,3 @@ const Description = styled.p`
   min-height: 12rem; max-height: 12rem;
   overflow: auto;
 `;
-
-export default CarContainer;

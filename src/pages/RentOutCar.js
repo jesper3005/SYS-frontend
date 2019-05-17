@@ -5,22 +5,22 @@ import styled from 'styled-components';
 
 class FormContainer extends Component {
   state = {
-    manufactor: '',
-    price: 200,
-    type: 'SUV',
-    latitude: '55.5355',
-    longtitude: '13.371700000000033',
-    model: '',
-    seats: '',
     regNo: '',
-    driveDist: '',
+    price: '',
+    manufactor: '',
+    model: '',
+    type: 'SUV',
     productionYear: '',
+    driveDist: '',
+    seats: '',
     drive: '',
     fuelType: '',
+    longtitude: '13.371700000000033',
+    latitude: '55.5355',
     address: '',
     country: '',
     company: 'TTT',
-    username: 'TestUser',
+    username: 'Jepper_KickFlip',
   };
 
   handleSubmit = event => {
@@ -72,14 +72,13 @@ class FormContainer extends Component {
 
   render() {
     const {
+      regNo,
+      price,
       manufactor,
       model,
       seats,
-      regNo,
       driveDist,
       productionYear,
-      drive,
-      fuelType,
       address,
       country,
     } = this.state;
@@ -88,6 +87,22 @@ class FormContainer extends Component {
       <Container>
         <Form onSubmit={this.handleSubmit}>
           <Title>Here you can rent out your own Car</Title>
+          <Input
+            type="text"
+            name="regNo"
+            value={regNo}
+            onChange={this.handleChange}
+            placeholder="Registration no."
+            required
+          />
+          <Input
+            type="number"
+            name="price"
+            value={price}
+            onChange={this.handleChange}
+            placeholder="Price pr/day"
+            required
+          />
           <Input
             type="text"
             name="manufactor"
@@ -104,6 +119,12 @@ class FormContainer extends Component {
             placeholder="What model do you own?"
             required
           />
+          <Select onChange={this.handleChange} name="type" required>
+            <option value="choice">Choose the vehicle type</option>
+            <option value="SUV">SUV</option>
+            <option value="Sedan">Sedan</option>
+            <option value="Stationcar">Stationcar</option>
+          </Select>
           <Input
             type="number"
             name="seats"
@@ -111,14 +132,6 @@ class FormContainer extends Component {
             value={seats}
             onChange={this.handleChange}
             placeholder="Number of seats"
-            required
-          />
-          <Input
-            type="text"
-            name="regNo"
-            value={regNo}
-            onChange={this.handleChange}
-            placeholder="Registration no."
             required
           />
           <Input

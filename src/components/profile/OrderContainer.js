@@ -16,7 +16,6 @@ class OrderContainer extends Component {
   }
 
   componentDidMount() {
-    //TO DO: FETCH CARS FROM USER BY ID
     var url = 'https://fenonline.dk/SYS_Backend/api/user/orders'
     const getHeader = {
       headers: {
@@ -24,13 +23,11 @@ class OrderContainer extends Component {
       }
     };
 
-    alert(this.props.userToken)
-
     fetch(url, getHeader).then(res => {
-      if (!res.ok) { throw Error(res.status + ": " + res.statusText + " | You are not logged in as a User!"); }
+      if (!res.ok) { throw Error(res.status + ": " + res.statusText + " | Could not fetch user orders!"); }
       return res.json();
     }).then(data => {
-      this.setState({data: data})
+      this.setState({ data: data })
       return data.msg;
     }).catch(error => {
       console.log(error);
@@ -56,36 +53,6 @@ class OrderContainer extends Component {
 }
 
 export default OrderContainer;
-
-const fetchOrders = () => {
-  // TODO:
-  return [
-    {
-      created: '01-01-2001',
-      start: '01-01-2001',
-      end: '01-01-2001',
-      rating: 4,
-    },
-    {
-      created: '01-01-2001',
-      start: '01-01-2001',
-      end: '01-01-2001',
-      rating: 4,
-    },
-    {
-      created: '01-01-2001',
-      start: '01-01-2001',
-      end: '01-01-2001',
-      rating: 4,
-    },
-    {
-      created: '01-01-2001',
-      start: '01-01-2001',
-      end: '01-01-2001',
-      rating: 4,
-    },
-  ];
-};
 
 const Container = styled(Col)`
   min-height: 20rem;

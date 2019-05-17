@@ -19,18 +19,6 @@ class Login extends Component {
 
 export default Login;
 
-// const SignIn = () => (
-//   <Container fluid={true}>
-//     <BrandRow>
-//     </BrandRow>
-//     <FormRow>
-//       <FormContainer handleToken={props.handleToken} />
-//     </FormRow>
-//   </Container>
-// );
-
-// export default SignIn;
-
 const BrandRow = styled(Row)`
   min-height: 13rem; max-height: 13rem;
   margin-bottom: 2rem;
