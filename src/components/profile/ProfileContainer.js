@@ -34,9 +34,10 @@ class ProfileContainer extends Component {
 
   getRating = async () => {
     const { userName } = this.props.userData;
-    const url = `https://fenonline.dk/SYS_Backend/api/rating/getRating/${userName}`
-    const rating = await fetch(url).then(handleHttpErrors);
-    this.setState({ rating: rating })
+    const url = `https://fenonline.dk/SYS_Backend/api/rating/getRating/Jepper_KickFlip`
+    const data = await fetch(url).then(handleHttpErrors);
+    console.log(JSON.stringify(data))
+    this.setState({ rating: data.rating })
   }
 
   render() {

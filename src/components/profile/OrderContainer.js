@@ -28,6 +28,7 @@ class OrderContainer extends Component {
       return res.json();
     }).then(data => {
       this.setState({ data: data })
+      console.log(JSON.stringify(data))
       return data.msg;
     }).catch(error => {
       console.log(error);

@@ -25,7 +25,7 @@ class CarContainer extends Component {
       this.setState({ carData: data })
       return data.msg;
     }).catch(error => {
-      alert(error);
+      alert("Something went wrong with getting your cars :( Please sign in and check your connection");
       return error.message;
     });
   }

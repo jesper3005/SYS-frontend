@@ -34,7 +34,8 @@ class FormContainer extends Component {
     const { startDate, endDate} = this.state;
     var url = `https://www.fenonline.dk/SYS_Backend/api/car/rent/${company}/${regNo}/${startDate}/${endDate}`
     fetch(url).then(handleHttpErrors).then(data => {
-      alert("It worked")
+      console.log(data);
+      alert("It worked");
       this.props.history.push('/car-booked-receipt');
     }).catch(error => console.log(JSON.stringify(error)));
   }

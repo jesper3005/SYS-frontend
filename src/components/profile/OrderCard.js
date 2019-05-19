@@ -11,6 +11,14 @@ class OrderCard extends Component {
     rating: 1,
   }
 
+  handleSubmit() {
+    const theRating = {
+      userName: "",
+      rating: this.state.rating
+    }
+    this.createRating(theRating);
+  }
+
   onStarClick(nextValue, prevValue, name) {
     this.setState({ rating: nextValue });
   }
@@ -18,6 +26,23 @@ class OrderCard extends Component {
   componentDidMount() {
     const { created, start, end } = this.props
     this.setState({ created, start, end })
+  }
+
+  createRating = theRating => {
+    const url = "https://fenonline.dk/SYS_Backend/api/rating/createRating";
+    const putHeader = {
+      method: "POST",
+      body: JSON.stringify(theRating),
+      headers: {
+        'Content-Type': "application/json"
+      },
+    };
+    fetch(url, putHeader).then(res => {
+      if (!res.ok) { throw Error(res.status + ": " + res.statusText); }
+      return res.json();
+    }).then(data => {
+      alert("You have rated the booking, thank you for the feedback!");
+    }).catch(error => alert(error));
   }
 
   render() {
@@ -33,6 +58,9 @@ class OrderCard extends Component {
           value={this.state.rating}
           onStarClick={this.onStarClick.bind(this)}
         />
+        <form onSubmit={this.handleSubmit}>
+          <input type="submit" value="Rate!"/>
+        </form>
       </Container>
     );
   }
