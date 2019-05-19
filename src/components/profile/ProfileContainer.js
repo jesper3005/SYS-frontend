@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Col } from 'reactstrap';
 import styled from 'styled-components';
+import StarRatingComponent from 'react-star-rating-component';
+
 
 class ProfileContainer extends Component {
   state = {
@@ -10,7 +12,7 @@ class ProfileContainer extends Component {
     email: '',
     phone: '',
     driverLicenseNumber: '',
-    rating: 1,
+    rating: '',
   };
 
   onStarClick(nextValue) {
@@ -19,6 +21,7 @@ class ProfileContainer extends Component {
 
   componentDidMount() {
     //Fetch user rating
+    this.getRating();
   }
 
   handleSubmit = event => {
@@ -29,25 +32,47 @@ class ProfileContainer extends Component {
     this.setState({ [event.target.name]: event.target.value });
   };
 
+  getRating = async () => {
+    const { userName } = this.props.userData;
+    const url = `https://fenonline.dk/SYS_Backend/api/rating/getRating/${userName}`
+    const rating = await fetch(url).then(handleHttpErrors);
+    this.setState({ rating: rating })
+  }
+
   render() {
-    const { profile, firstName, lastName, email, phone, driverLicenseNumber } = this.props.userData;
+    const { profile, firstName, lastName, email, phone, driverLicenseNumber, userName, status } = this.props.userData;
     return (
       <Container>
         <Profile src={profile} />
         <Form onSubmit={this.handleSubmit}>
+          <Label> <strong>Your rating:</strong></Label>
+          <StarRatingComponent
+            name="rate2"
+            editing={false}
+            starCount={5}
+            value={this.state.rating}
+          />
+          <Label> <strong> Username: </strong> {userName}</Label>
+          <Label> <strong> Status: </strong> {status}</Label>
           <Label> <strong> First Name: </strong> {firstName}</Label>
           <Label> <strong> Last Name: </strong> {lastName}</Label>
           <Label> <strong> Email: </strong>{email}</Label>
           <Label> <strong> Phone: </strong>{phone}</Label>
           <Label> <strong> Driver licences: </strong> {driverLicenseNumber}</Label>
-
         </Form>
-      </Container>
+      </Container >
     );
   }
 }
 
 export default ProfileContainer;
+
+function handleHttpErrors(res) {
+  if (!res.ok) {
+    return Promise.reject({ status: res.status, fullError: res.json() })
+  }
+  return res.json();
+}
 
 //Styles
 

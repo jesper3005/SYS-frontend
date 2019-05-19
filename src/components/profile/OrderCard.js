@@ -21,12 +21,12 @@ class OrderCard extends Component {
   }
 
   render() {
-    const { created, start, end } = this.state;
+    const { startPeriod, endPeriod, created, price, car } = this.props;
     return (
       <Container>
         <Info><Label>Created:</Label> {created}</Info>
-        <Info><Label>Start Period:</Label> {start}</Info>
-        <Info><Label>End Period:</Label> {end}</Info>
+        <Info><Label>Start Period:</Label> {startPeriod}</Info>
+        <Info><Label>End Period:</Label> {endPeriod}</Info>
         <StarRatingComponent
           name="rating"
           starCount={6}
